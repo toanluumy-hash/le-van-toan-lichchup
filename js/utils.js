@@ -1,0 +1,9 @@
+export const $=(q,root=document)=>root.querySelector(q);export const $$=(q,root=document)=>[...root.querySelectorAll(q)];
+export const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export const money=v=>new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(Number(v)||0);
+export const dateISO=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+export const prettyDate=s=>{if(!s)return '—';const [y,m,d]=String(s).slice(0,10).split('-');return `${d}/${m}/${y}`};
+export const statusText=s=>({pending:'Chờ thực hiện',confirmed:'Đã xác nhận',in_progress:'Đang thực hiện',completed:'Hoàn thành',cancelled:'Đã hủy'}[s]||s||'Chờ thực hiện');
+export function toast(message){const el=$('#toast');el.textContent=message;el.classList.remove('hidden');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.add('hidden'),4500)}
+export function modal(title,content,onSubmit){const host=$('#modalHost');host.innerHTML=`<div class="overlay"><div class="modal"><div class="panelhead"><h2>${esc(title)}</h2><button class="btn" type="button" id="closeModal">✕</button></div><form id="modalForm">${content}<div class="actions"><button type="button" class="btn" id="cancelModal">Hủy</button><button type="submit" class="btn primary">Lưu thông tin</button></div></form></div></div>`;$('#closeModal').onclick=$('#cancelModal').onclick=()=>host.innerHTML='';$('#modalForm').onsubmit=async e=>{e.preventDefault();const b=$('#modalForm button[type=submit]');b.disabled=true;try{await onSubmit(new FormData(e.currentTarget));host.innerHTML=''}catch(err){toast(err.message)}finally{b.disabled=false}}}
+export const field=(label,name,value='',type='text',extra='')=>`<div class="field"><label>${esc(label)}</label><input name="${name}" type="${type}" value="${esc(value)}" ${extra}></div>`;
