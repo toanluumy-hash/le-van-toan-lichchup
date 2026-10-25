@@ -552,29 +552,47 @@ $('#avatarUpload')?.addEventListener('change',e=>{const file=e.target.files?.[0]
 async function deleteItem(kind,id,label){if(!confirm(`Xóa ${label} này? Thao tác không thể hoàn tác.`))return;await api(`/api/${kind}/${encodeURIComponent(id)}`,{method:'DELETE'});toast('Đã xóa thành công');await refresh()}
 function customerModal(c){modal(c?'Sửa khách hàng':'Thêm khách hàng',`<div class="formgrid">${field('Họ tên *','name',c?.name,'text','required maxlength="120"')}${field('Số điện thoại','phone',c?.phone,'tel','maxlength="30"')}<div class="field full"><label>Ghi chú</label><textarea name="notes" rows="3">${esc(c?.notes||'')}</textarea></div></div>`,async f=>{const data={name:String(f.get('name')).trim(),phone:String(f.get('phone')).trim(),notes:String(f.get('notes')).trim()};await api(c?`/api/customers/${encodeURIComponent(c.id)}`:'/api/customers',{method:c?'PUT':'POST',data});toast('Đã lưu khách hàng');await refresh()})}
 // Định dạng tiền trong khi nhập: 10000000 -> 10.000.000 (giá trị API vẫn là số nguyên VND).
-const formatMoneyInput=v=>{
- const digits=String(v??'').replace(/\D/g,'');
- return digits ? digits.replace(/\B(?=(\d{3})+(?!\d))/g,'.') : '';
+// Money fields: normalize leading zeros before formatting; keep exact integer for D1.
+const moneyDigits = value => {
+ const digits=String(value??'').replace(/\D/g,'').replace(/^0+(?=\d)/,'');
+ return digits||'0';
 };
-const parseMoneyInput=v=>{
- const text=String(v??'').trim();
- if(!text||!/^\d{1,3}(?:\.\d{3})*$|^\d+$/.test(text))return NaN;
- const number=Number(text.replaceAll('.',''));
- return Number.isSafeInteger(number)?number:NaN;
+const formatMoneyInput = value => moneyDigits(value).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const parseMoneyInput = value => {
+ const raw=String(value??'').trim();
+ if(!/^\d[\d.]*$/.test(raw))return NaN;
+ const digits=moneyDigits(raw);
+ const amount=Number(digits);
+ return Number.isSafeInteger(amount)&&amount>=0&&amount<=1000000000000?amount:NaN;
 };
 function moneyInputField(label,name,value){
- return `<div class="field money-field"><label for="job-${name}">${esc(label)}</label><div class="money-input-wrap"><input id="job-${name}" name="${name}" class="money-input" type="text" inputmode="numeric" autocomplete="off" placeholder="Ví dụ: 10.000.000" value="${formatMoneyInput(value)}" maxlength="17" required><span class="money-unit">₫</span></div></div>`;
+ return `<div class="field money-field"><label for="job-${name}">${esc(label)}</label><div class="money-input-wrap"><input id="job-${name}" name="${name}" class="money-input" type="text" inputmode="numeric" autocomplete="off" placeholder="Ví dụ: 10.000.000" value="${formatMoneyInput(value??0)}" maxlength="19" required><span class="money-unit">₫</span></div></div>`;
 }
-// Bắt sự kiện trên modalHost để phần tử mới trong popup cũng tự định dạng khi nhập.
-document.querySelector('#modalHost').addEventListener('input',e=>{
- const input=e.target;
+const moneyModal=document.querySelector('#modalHost');
+moneyModal.addEventListener('focusin',event=>{
+ const input=event.target;
+ if(input instanceof HTMLInputElement && input.classList.contains('money-input') && input.value==='0'){
+   // Remove default zero so the user's first digit is not appended to it.
+   input.value='';
+ }
+});
+moneyModal.addEventListener('focusout',event=>{
+ const input=event.target;
+ if(input instanceof HTMLInputElement && input.classList.contains('money-input') && !input.value.trim())input.value='0';
+});
+moneyModal.addEventListener('input',event=>{
+ const input=event.target;
  if(!(input instanceof HTMLInputElement)||!input.classList.contains('money-input'))return;
- const before=input.value,caret=input.selectionStart??before.length;
- const digitsBefore=before.slice(0,caret).replace(/\D/g,'').length;
- const formatted=formatMoneyInput(before).slice(0,17);
+ const raw=input.value;
+ const caret=input.selectionStart??raw.length;
+ const digitsBefore=raw.slice(0,caret).replace(/\D/g,'').length;
+ const digits=moneyDigits(raw);
+ const removedZeros=raw.replace(/\D/g,'').length-digits.length;
+ const posDigits=Math.max(0,digitsBefore-Math.max(0,removedZeros));
+ const formatted=digits.replace(/\B(?=(\d{3})+(?!\d))/g,'.');
  input.value=formatted;
- let i=0,n=0;
- while(i<formatted.length&&n<digitsBefore){if(/\d/.test(formatted[i]))n++;i++;}
+ let n=0,i=0;
+ while(i<formatted.length&&n<posDigits){if(/\d/.test(formatted[i]))n++;i++}
  input.setSelectionRange(i,i);
 });
 function jobModal(j,day=today()){
