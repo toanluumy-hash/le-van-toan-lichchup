@@ -800,7 +800,9 @@ bindPage=function(){v12OriginalBindPage();
 v12InitGoogle();
 
 restore();
-
+function softHaptic() {
+  if (navigator.vibrate) navigator.vibrate(10);
+}
 (function addAmbientParticles(){
  const host=document.getElementById('lvtParticles');
  if(!host||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
