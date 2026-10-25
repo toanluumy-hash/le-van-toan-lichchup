@@ -274,6 +274,66 @@ html[data-theme="light"] #app::before{background:radial-gradient(ellipse 48vw 48
 .historical-notice{margin:14px 0 4px;border-radius:12px;padding:12px;background:color-mix(in srgb,var(--card) 85%,#c7a051 15%);border:1px solid #c7a05160;color:var(--ink);font-size:12px;line-height:1.7}
 .readonly-action{display:inline-flex;gap:5px;align-items:center}
 @media(max-width:420px){.detail-grid{grid-template-columns:1fr}.detail-box.wide{grid-column:auto}}
+
+
+/* V8.1 — Mobile balanced layout / prevent header wrapping */
+@media (max-width:740px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  #app.app:not(.hidden){width:100%;overflow-x:clip}
+  #app>.main{width:100%;min-width:0;max-width:100%;padding:14px 13px 32px!important}
+  #app>.main>.top{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto auto auto;
+    grid-template-rows:auto auto auto;
+    column-gap:8px;
+    row-gap:10px;
+    align-items:center!important;
+    margin:0 0 19px!important;
+    padding:0!important;
+  }
+  #app>.main>.top>div:first-child,
+  #app>.main>.top>.top-actions{display:contents!important}
+  #menuBtn{display:inline-flex!important;align-items:center;justify-content:center;grid-column:1;grid-row:1;margin:0;min-height:38px;justify-self:start}
+  #globalSearch{grid-column:2;grid-row:1;justify-self:end;margin:0;white-space:nowrap}
+  #themeToggle{grid-column:3;grid-row:1;justify-self:end;margin:0;white-space:nowrap}
+  #headerAvatar{grid-column:4;grid-row:1;justify-self:end}
+  #userBadge{display:none!important}
+  #pageTitle{grid-column:1/span 2;grid-row:2;font-size:23px;line-height:1.25;margin:0!important;min-width:0}
+  #quickAdd{grid-column:3/span 2;grid-row:2;justify-self:end;min-height:41px;margin:0;white-space:nowrap;padding:10px 13px!important;font-size:12px}
+  #welcome{grid-column:1/-1;grid-row:3;font-size:11px;line-height:1.5;margin:-5px 0 0}
+  #pageContent{min-width:0;width:100%;margin:0}
+  #pageContent>.layout2{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;align-items:start}
+  #pageContent>.layout2>.panel{min-width:0;width:100%;margin:0!important;padding:14px!important}
+  #pageContent .panelhead{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:8px;margin:0 0 14px}
+  #pageContent .panelhead h2{font-size:17px;min-width:0;margin:0;line-height:1.4}
+  #pageContent .panelhead .controls{flex:none;display:flex;gap:5px}
+  #pageContent .panelhead .controls .btn{padding:9px 10px;font-size:12px;min-height:38px}
+  #pageContent .week,#pageContent .days{gap:5px}
+  #pageContent .day{min-width:0;min-height:64px;padding:7px 5px;border-radius:9px;gap:2px}
+  #pageContent .day .num{font-size:12px}
+  #pageContent .day .lunar{font-size:9px}
+  #pageContent .day.today .num{width:24px;height:24px}
+  #pageContent .entry{min-width:0}
+  #pageContent .entry>div{min-width:0;overflow-wrap:anywhere}
+  #pageContent .panel:has(.days){padding-bottom:13px!important}
+  #pageContent>.grid4{margin-bottom:12px}
+}
+@media (max-width:390px){
+  #app>.main{padding:11px 9px 25px!important}
+  #app>.main>.top{grid-template-columns:minmax(0,1fr) auto auto;column-gap:5px}
+  #menuBtn{grid-column:1}
+  #globalSearch{grid-column:2;font-size:0!important;width:39px;height:39px;padding:0!important}
+  #globalSearch::before{content:'⌕';font-size:23px}
+  #themeToggle{grid-column:3;max-width:80px;font-size:11px;padding:8px!important}
+  #headerAvatar{display:none!important}
+  #pageTitle{grid-column:1/span 2;font-size:21px}
+  #quickAdd{grid-column:3;font-size:11px;padding:8px 9px!important}
+  #pageContent>.layout2>.panel{padding:10px!important}
+  #pageContent .panelhead h2{font-size:15px}
+  #pageContent .panelhead .controls .btn{padding:8px 7px;font-size:11px}
+  #pageContent .week,#pageContent .days{gap:3px}
+  #pageContent .day{min-height:61px;padding:5px 3px}
+}
 </style></head><body><div id="auth" class="authpage"><section class="authhero"><div class="auth-ambient ambient-one"></div><div class="auth-ambient ambient-two"></div><div class="hero-top"><span class="hero-back">✦ &nbsp; CREATIVE WORKSPACE</span><span class="hero-version">LE VAN TOAN / 2026</span></div><div class="hero-inner"><div class="brand"><div class="mark brand-emblem" aria-label="Biểu tượng LE VAN TOAN"><svg viewBox="0 0 64 64" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="32" cy="32" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32 5l8 17M54 18l-18 3M59 40L43 31M38 58l-6-17M12 49l17-9M7 25l17 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><div><strong>LE VAN TOAN</strong><small>PHOTOGRAPHY MANAGEMENT</small></div></div><div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span> PHOTOGRAPHY BUSINESS SUITE</div><h1>Để mỗi khoảnh khắc<br><em>đều có kế hoạch.</em></h1><p>Một không gian tinh gọn để quản lý lịch chụp, khách hàng và doanh thu — dành riêng cho người làm sáng tạo.</p><div class="hero-benefits"><span>◈ Lịch chụp thông minh</span><span>◈ Khách hàng riêng tư</span><span>◈ Theo dõi doanh thu</span></div></div></div><div class="hero-bottom"><span>BUILT FOR PHOTOGRAPHERS</span><span>01 — YOUR CREATIVE SPACE</span></div></section><section class="authbox"><div class="auth-controls"><label class="theme-control" for="authThemeSwitch"><span class="theme-icon" aria-hidden="true">☀️</span><span class="theme-caption">Giao diện <strong id="authThemeLabel">Sáng</strong></span><input id="authThemeSwitch" class="theme-input" type="checkbox" role="switch" aria-label="Bật chế độ tối"><span class="theme-track" aria-hidden="true"><span class="theme-thumb"></span></span></label></div><div class="authcard"><div class="authcard-brand"><span class="auth-mini-logo">✦</span><div><strong>LE VAN TOAN</strong><small>STUDIO MANAGEMENT</small></div></div><div class="auth-welcome">KHÔNG GIAN CỦA BẠN</div><h2 id="authTitle">Chào mừng trở lại</h2><p class="sub" id="authSub">Đăng nhập để tiếp tục hành trình sáng tạo của bạn.</p><div class="auth-features"><span>✧ Bảo mật riêng tư</span><span>◷ Đồng bộ công việc</span></div><form id="authForm"><div id="nameField" class="field hidden"><label>Họ và tên</label><input id="authName" autocomplete="name"></div><div class="field"><label>Email</label><input id="authEmail" type="email" autocomplete="email" required></div><div class="field password-field"><div class="password-label-row"><label for="authPassword">Mật khẩu</label><button id="forgotPassword" class="forgot-link" type="button">Quên mật khẩu?</button></div><div class="password-input-wrap"><input id="authPassword" type="password" minlength="12" autocomplete="current-password" required placeholder="Nhập mật khẩu của bạn"><button id="showPassword" class="password-eye" type="button" aria-label="Hiện mật khẩu" aria-pressed="false" title="Hiện mật khẩu"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div><button class="btn primary" type="submit" id="authSubmit">Đăng nhập</button></form><div class="auth-separator"><span>hoặc tiếp tục với</span></div><button id="googleLogin" class="google-signin" type="button"><span class="google-g" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5Z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.27 5.48-4.8 7.18l7.73 6C44.38 38.03 46.98 31.85 46.98 24.55Z"/><path fill="#FBBC05" d="M10.53 28.59A14.4 14.4 0 0 1 9.75 24c0-1.59.27-3.13.77-4.59l-7.98-6.2A23.87 23.87 0 0 0 0 24c0 3.87.93 7.53 2.56 10.78l7.97-6.19Z"/><path fill="#34A853" d="M24 48c6.48 0 11.92-2.13 15.88-5.8l-7.73-6c-2.15 1.45-4.92 2.3-8.15 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48Z"/></svg></span><span>Tiếp tục với Google</span><span class="soon-label">Sắp có</span></button><p class="auth-provider-note">Đăng nhập Google cần kết nối OAuth với hệ thống tài khoản.</p><p class="sub" style="margin-top:20px"><span id="authSwitchText">Chưa có tài khoản?</span> <button class="link" id="authSwitch">Đăng ký ngay</button></p><div class="auth-security"><span>✧ Dữ liệu của bạn được lưu riêng tư</span><span>✦ Đăng nhập bảo mật</span></div><p class="notice">🔒 Mỗi tài khoản có dữ liệu riêng, được bảo vệ bằng đăng nhập an toàn.</p><div class="authcard-foot">© 2026 LE VAN TOAN <span>CRAFTED FOR CREATORS ✦</span></div></div></section></div>
 <div id="app" class="app hidden"><div class="lvt-particles" id="lvtParticles" aria-hidden="true"></div><aside class="sidebar" id="sidebar"><div class="brand"><div class="mark brand-emblem" aria-label="Biểu tượng LE VAN TOAN"><svg viewBox="0 0 64 64" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="32" cy="32" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32 5l8 17M54 18l-18 3M59 40L43 31M38 58l-6-17M12 49l17-9M7 25l17 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><div><strong>LE VAN TOAN</strong><small>PHOTOGRAPHY MANAGEMENT</small></div></div><nav class="nav" id="nav"><button data-page="dashboard" class="active"><span>▦</span>Tổng quan</button><button data-page="calendar"><span>▣</span>Lịch chụp</button><button data-page="jobs"><span>▤</span>Công việc</button><button data-page="statistics"><span>◴</span>Thống kê</button><button data-page="notifications"><span>♢</span>Thông báo</button><button data-page="admin" id="adminNav" class="hidden"><span>⚙</span>Quản trị</button><button data-page="account"><span>◉</span>Tài khoản</button></nav><div class="sidefoot">© 2026 LE VAN TOAN<br>Cloudflare Workers + D1</div></aside><main class="main"><header class="top"><div><button class="btn mobilemenu" id="menuBtn">☰ Menu</button><h1 id="pageTitle">Tổng quan</h1><div class="sub" id="welcome">Không gian làm việc của bạn</div></div><div class="top-actions"><button class="btn top-search-btn" id="globalSearch" title="Tìm lịch chụp hoặc khách hàng">⌕ Tìm kiếm</button><button class="btn theme-switch" id="themeToggle" type="button">🌙 Tối</button><span id="headerAvatar" class="header-avatar"></span><span class="pill" id="userBadge">Thành viên</span><button class="btn primary" id="quickAdd">+ Thêm lịch chụp</button></div></header><section id="pageContent"></section></main></div><div id="modalHost"></div><div id="toast" class="toast hidden" role="status"></div><script>// Chỉnh API_BASE khi đổi tên miền backend. Không đặt khóa bí mật trong file này.
 const API_BASE='https://toanart-lichchup-api.toanluumy.workers.dev';
