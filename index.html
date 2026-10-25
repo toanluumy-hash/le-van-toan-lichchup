@@ -595,9 +595,11 @@ const isLockedJob=j=>j?.payment_status==='paid';
 const canFullEdit=j=>!isPastJob(j)&&!isLockedJob(j);
 function jobDetail(j){
  if(!j){toast('Không tìm thấy lịch chụp');return;}
- const name=j.customer_name||customerName(j.customer_id);
- const fields=[['Tên công việc',j.title],['Khách hàng',name],['Ngày chụp',prettyDate(j.shoot_date)],['Giờ chụp',`${j.start_time||'—'} – ${j.end_time||'—'}`],['Địa điểm',j.location||'—'],['Tổng tiền',money(j.amount)],['Tiền cọc',money(j.deposit)],['Trạng thái',statusText(j.status)],['Thanh toán',({unpaid:'Chưa thanh toán',partial:'Thanh toán một phần',paid:'Đã thanh toán'}[j.payment_status]||'—')],['Ghi chú',j.notes||'—']];
- modal('Chi tiết lịch chụp',`<div class="detail-grid">${fields.map(([label,value],i)=>`<div class="detail-box ${i===9?'wide':''}"><small>${esc(label)}</small><strong>${esc(value)}</strong></div>`).join('')}</div>${isLockedJob(j)?'<p class="historical-notice">🔒 Đã thanh toán — lịch được khóa vĩnh viễn, chỉ được xem.</p>':isPastJob(j)?'<p class="historical-notice">Lịch đã qua: chỉ cho phép sửa tên hoặc xác nhận Đã thanh toán.</p>':''}`,async()=>{});
+ const customer=state.customers.find(c=>String(c.id)===String(j.customer_id));
+ const name=j.customer_name||customer?.name||customerName(j.customer_id);
+ const customerPhone=customer?.phone||j.customer_phone||j.phone||'';
+ const fields=[['Tên công việc',j.title],['Khách hàng',name],['Số điện thoại khách',customerPhone||'Chưa có số điện thoại'],['Ngày chụp',prettyDate(j.shoot_date)],['Giờ chụp',`${j.start_time||'—'} – ${j.end_time||'—'}`],['Địa điểm',j.location||'—'],['Tổng tiền',money(j.amount)],['Tiền cọc',money(j.deposit)],['Trạng thái',statusText(j.status)],['Thanh toán',({unpaid:'Chưa thanh toán',partial:'Thanh toán một phần',paid:'Đã thanh toán'}[j.payment_status]||'—')],['Ghi chú',j.notes||'—']];
+ modal('Chi tiết lịch chụp',`<div class="detail-grid">${fields.map(([label,value],i)=>`<div class="detail-box ${label==='Ghi chú'?'wide':''}"><small>${esc(label)}</small><strong>${esc(value)}</strong></div>`).join('')}</div>${isLockedJob(j)?'<p class="historical-notice">🔒 Đã thanh toán — lịch được khóa vĩnh viễn, chỉ được xem.</p>':isPastJob(j)?'<p class="historical-notice">Lịch đã qua: chỉ cho phép sửa tên hoặc xác nhận Đã thanh toán.</p>':''}`,async()=>{});
  const form=$('#modalForm');const actions=form?.querySelector('.actions');if(actions)actions.innerHTML='<button type="button" class="btn primary" id="doneDetail">Đóng</button>';
  $('#doneDetail')?.addEventListener('click',()=>{$('#modalHost').innerHTML=''});
 }
