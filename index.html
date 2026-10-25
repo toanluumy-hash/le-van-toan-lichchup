@@ -553,47 +553,65 @@ async function deleteItem(kind,id,label){if(!confirm(`Xóa ${label} này? Thao t
 function customerModal(c){modal(c?'Sửa khách hàng':'Thêm khách hàng',`<div class="formgrid">${field('Họ tên *','name',c?.name,'text','required maxlength="120"')}${field('Số điện thoại','phone',c?.phone,'tel','maxlength="30"')}<div class="field full"><label>Ghi chú</label><textarea name="notes" rows="3">${esc(c?.notes||'')}</textarea></div></div>`,async f=>{const data={name:String(f.get('name')).trim(),phone:String(f.get('phone')).trim(),notes:String(f.get('notes')).trim()};await api(c?`/api/customers/${encodeURIComponent(c.id)}`:'/api/customers',{method:c?'PUT':'POST',data});toast('Đã lưu khách hàng');await refresh()})}
 // Định dạng tiền trong khi nhập: 10000000 -> 10.000.000 (giá trị API vẫn là số nguyên VND).
 // Money fields: normalize leading zeros before formatting; keep exact integer for D1.
-const moneyDigits = value => {
- const digits=String(value??'').replace(/\D/g,'').replace(/^0+(?=\d)/,'');
- return digits||'0';
-};
-const formatMoneyInput = value => moneyDigits(value).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+// V10.3: nhập số tiền trực tiếp - không bao giờ nối với giá trị còn sót lại khi mới focus.
+const moneyDigits = value => String(value ?? '').replace(/\D/g, '').replace(/^0+(?=\d)/, '') || '0';
+const formatMoneyInput = value => moneyDigits(value).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 const parseMoneyInput = value => {
- const raw=String(value??'').trim();
- if(!/^\d[\d.]*$/.test(raw))return NaN;
- const digits=moneyDigits(raw);
- const amount=Number(digits);
- return Number.isSafeInteger(amount)&&amount>=0&&amount<=1000000000000?amount:NaN;
+ const raw = String(value ?? '').trim();
+ if (!/^\d[\d.]*$/.test(raw)) return NaN;
+ const number = Number(moneyDigits(raw));
+ return Number.isSafeInteger(number) && number >= 0 && number <= 1000000000000 ? number : NaN;
 };
 function moneyInputField(label,name,value){
- return `<div class="field money-field"><label for="job-${name}">${esc(label)}</label><div class="money-input-wrap"><input id="job-${name}" name="${name}" class="money-input" type="text" inputmode="numeric" autocomplete="off" placeholder="Ví dụ: 10.000.000" value="${formatMoneyInput(value??0)}" maxlength="19" required><span class="money-unit">₫</span></div></div>`;
+ const valueDisplay = value == null || Number(value) === 0 ? '' : formatMoneyInput(value);
+ return `<div class="field money-field"><label for="job-${name}">${esc(label)}</label><div class="money-input-wrap"><input id="job-${name}" name="${name}" class="money-input" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="0" value="${valueDisplay}" maxlength="19" required><span class="money-unit">₫</span></div></div>`;
 }
-const moneyModal=document.querySelector('#modalHost');
-moneyModal.addEventListener('focusin',event=>{
- const input=event.target;
- if(input instanceof HTMLInputElement && input.classList.contains('money-input') && input.value==='0'){
-   // Remove default zero so the user's first digit is not appended to it.
-   input.value='';
+const moneyModal = document.querySelector('#modalHost');
+// Chạm vào số có sẵn: chọn toàn bộ để số mới thay thế, không ghép vào số cũ.
+moneyModal.addEventListener('focusin', e => {
+ const input = e.target;
+ if (!(input instanceof HTMLInputElement) || !input.classList.contains('money-input')) return;
+ input.dataset.moneyFresh = 'yes';
+ input.select();
+});
+// Bắt đầu gõ khi vừa chọn trường: xoá nội dung cũ trước khi ký tự đầu được nhập.
+// beforeinput bảo vệ cả trường hợp trình duyệt mobile tự đặt con trỏ ở giữa giá trị cũ.
+moneyModal.addEventListener('beforeinput', e => {
+ const input = e.target;
+ if (!(input instanceof HTMLInputElement) || !input.classList.contains('money-input')) return;
+ if (input.dataset.moneyFresh !== 'yes') return;
+ if (e.inputType?.startsWith('insert') && !e.isComposing) {
+   input.value = '';
+   try { input.setSelectionRange(0, 0); } catch {}
  }
+ input.dataset.moneyFresh = 'no';
 });
-moneyModal.addEventListener('focusout',event=>{
- const input=event.target;
- if(input instanceof HTMLInputElement && input.classList.contains('money-input') && !input.value.trim())input.value='0';
+// Format lại sau mỗi lần nhập và duy trì con trỏ dựa trên số chữ số phía trước.
+moneyModal.addEventListener('input', e => {
+ const input = e.target;
+ if (!(input instanceof HTMLInputElement) || !input.classList.contains('money-input')) return;
+ input.dataset.moneyFresh = 'no';
+ const raw = input.value;
+ const beforeCaret = raw.slice(0, input.selectionStart ?? raw.length).replace(/\D/g, '').length;
+ const allDigits = raw.replace(/\D/g, '');
+ const normalized = allDigits.replace(/^0+(?=\d)/, '');
+ if (!normalized) { input.value = ''; return; }
+ const droppedZeros = allDigits.length - normalized.length;
+ const digitsToCaret = Math.max(0, beforeCaret - droppedZeros);
+ const formatted = normalized.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+ input.value = formatted;
+ let at = 0, digitsSeen = 0;
+ while (at < formatted.length && digitsSeen < digitsToCaret) {
+   if (/\d/.test(formatted[at])) digitsSeen++;
+   at++;
+ }
+ input.setSelectionRange(at, at);
 });
-moneyModal.addEventListener('input',event=>{
- const input=event.target;
- if(!(input instanceof HTMLInputElement)||!input.classList.contains('money-input'))return;
- const raw=input.value;
- const caret=input.selectionStart??raw.length;
- const digitsBefore=raw.slice(0,caret).replace(/\D/g,'').length;
- const digits=moneyDigits(raw);
- const removedZeros=raw.replace(/\D/g,'').length-digits.length;
- const posDigits=Math.max(0,digitsBefore-Math.max(0,removedZeros));
- const formatted=digits.replace(/\B(?=(\d{3})+(?!\d))/g,'.');
- input.value=formatted;
- let n=0,i=0;
- while(i<formatted.length&&n<posDigits){if(/\d/.test(formatted[i]))n++;i++}
- input.setSelectionRange(i,i);
+moneyModal.addEventListener('focusout', e => {
+ const input = e.target;
+ if (!(input instanceof HTMLInputElement) || !input.classList.contains('money-input')) return;
+ if (input.value.trim() === '') input.value = '0';
+ delete input.dataset.moneyFresh;
 });
 function jobModal(j,day=today()){
  if(j&&isLockedJob(j)){jobDetail(j);return;}
