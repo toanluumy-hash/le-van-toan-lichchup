@@ -1,0 +1,318 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102a50"><title>LE VAN TOAN V5 | Quản lý lịch chụp</title><style>@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+:root{--bg:#f4f7fb;--card:#fff;--ink:#142338;--muted:#708099;--line:#e2e9f2;--primary:#2267e8;--dark:#122f5b;--ok:#12946a;--warn:#d38b1e;--danger:#dc4661;--radius:17px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px 'Be Vietnam Pro',system-ui,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.hidden{display:none!important}.app{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}.sidebar{background:#102a50;color:#e5efff;padding:24px 15px;display:flex;flex-direction:column;gap:22px}.brand{display:flex;align-items:center;gap:12px;padding:5px 9px}.mark{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#4b85f4;font-size:24px}.brand strong{display:block;letter-spacing:1.2px;font-size:16px}.brand small{font-size:10px;color:#b2c7e5}.nav{display:grid;gap:5px}.nav button{border:0;background:none;color:#b8cbe4;text-align:left;border-radius:12px;padding:13px 14px}.nav button.active,.nav button:hover{background:#254977;color:white}.nav button span{margin-right:11px}.sidefoot{margin-top:auto;color:#a3bad9;font-size:11px;padding:12px}.main{min-width:0;padding:28px 32px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:25px}.top h1{margin:0 0 5px;font-size:25px}.sub{color:var(--muted);font-size:12px}.top-actions{display:flex;align-items:center;gap:10px}.pill{background:#e7efff;color:#225ac5;padding:9px 12px;border-radius:50px;font-size:12px}.btn{border:1px solid var(--line);background:white;border-radius:11px;padding:11px 15px;font-weight:600;color:var(--ink)}.btn.primary{background:var(--primary);border-color:var(--primary);color:white}.btn.danger{color:var(--danger)}.btn:disabled{opacity:.5;cursor:not-allowed}.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:20px}.metric,.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 4px 18px #102a5010}.metric{padding:21px}.metric .value{font-size:25px;font-weight:800;margin:9px 0 2px}.metric .label{font-size:12px;color:var(--muted)}.metric .accent{font-size:11px;color:var(--ok)}.panel{padding:22px;margin-bottom:20px}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.panelhead h2{margin:0;font-size:17px}.panelhead .controls{display:flex;gap:8px;align-items:center}.layout2{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:18px}.week,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}.week{text-align:center;color:var(--muted);font-size:11px;margin-bottom:10px}.day{min-height:83px;border:1px solid #e8edf5;border-radius:12px;background:white;text-align:left;padding:9px;display:flex;flex-direction:column;gap:5px}.day:hover{border-color:#7ea6f9}.day.other{opacity:.35}.day.selected{border:2px solid var(--primary);background:#f0f5ff}.day.today .num{background:var(--primary);color:white;border-radius:50%;width:25px;height:25px;display:grid;place-items:center}.num{font-weight:700}.lunar{font-size:9px;color:#9ba7b8}.dots{display:flex;gap:3px;flex-wrap:wrap}.dot{height:6px;width:6px;border-radius:50%;background:#4d85ef}.dot.done{background:#19aa82}.dot.cancelled{background:#c4cad4}.entry{border:1px solid var(--line);border-radius:12px;padding:13px;margin:9px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}.entry strong{display:block;margin-bottom:5px}.entry small{color:var(--muted);line-height:1.8}.tag{font-size:10px;border-radius:50px;padding:5px 8px;background:#e9f0ff;color:#3369c9}.tag.completed{background:#e4f8f1;color:#138a65}.tag.cancelled{background:#f3f3f3;color:#777}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;min-width:620px}th,td{padding:13px 10px;border-bottom:1px solid var(--line);font-size:12px}th{color:var(--muted);font-weight:600}td button{margin-right:4px}.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:17px}input,select,textarea{width:100%;border:1px solid #d8e1ed;border-radius:10px;padding:11px 12px;background:white;color:var(--ink);outline:0}input:focus,select:focus,textarea:focus{border-color:#6496f2}.toolbar input{max-width:330px}.toolbar select{max-width:180px}.empty{padding:30px 10px;color:var(--muted);text-align:center}.overlay{position:fixed;inset:0;background:#0c1d36aa;display:grid;place-items:center;z-index:50;padding:15px}.modal{width:min(650px,100%);max-height:92vh;overflow:auto;background:white;border-radius:20px;padding:25px;box-shadow:0 25px 80px #091b3455}.modal h2{margin:0 0 18px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:grid;gap:6px}.field label{font-size:11px;font-weight:600;color:#596c85}.full{grid-column:1/-1}.actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.toast{position:fixed;bottom:22px;right:22px;z-index:100;background:#173d70;color:white;border-radius:12px;padding:13px 18px;max-width:min(430px,90vw)}.authpage{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}.authhero{background:linear-gradient(135deg,#0c2851,#2459ad);color:white;display:flex;flex-direction:column;justify-content:center;padding:10%;gap:15px}.authhero h1{font-size:42px;line-height:1.2;margin:0}.authhero p{line-height:1.9;color:#d0e1ff}.authbox{display:grid;place-items:center;padding:25px}.authcard{width:min(410px,100%)}.authcard h2{font-size:26px}.authcard .field{margin:14px 0}.authcard .btn{width:100%;margin-top:8px}.link{border:0;background:none;color:var(--primary);padding:0;font-weight:700}.notice{background:#fff7e9;border:1px solid #f2dcab;color:#88641f;padding:12px;border-radius:10px;font-size:12px;line-height:1.8}.mobilemenu{display:none}@media(max-width:1100px){.grid4{grid-template-columns:repeat(2,1fr)}.layout2{grid-template-columns:1fr}}@media(max-width:740px){.app{grid-template-columns:1fr}.sidebar{position:fixed;z-index:20;left:0;top:0;bottom:0;width:245px;transform:translateX(-105%);transition:transform .2s}.sidebar.open{transform:none}.mobilemenu{display:block}.main{padding:17px 13px}.top h1{font-size:21px}.top{align-items:flex-start}.top-actions{flex-wrap:wrap;justify-content:flex-end}.grid4{gap:9px}.metric{padding:14px}.metric .value{font-size:19px}.panel{padding:13px}.day{min-height:62px;padding:5px;border-radius:8px}.lunar{font-size:8px}.formgrid{grid-template-columns:1fr}.authpage{grid-template-columns:1fr}.authhero{padding:36px 24px}.authhero h1{font-size:29px}.authbox{padding:26px}.pill{display:none}}
+:root{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark;--bg:#0c1323;--card:#172239;--ink:#edf4ff;--muted:#9dafc8;--line:#34435b;--primary:#6396ff;--dark:#0b162c;--ok:#4cdda8}
+html[data-theme="dark"] .sidebar{background:#090f1d}
+html[data-theme="dark"] .btn:not(.primary),html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="dark"] textarea,html[data-theme="dark"] .day,html[data-theme="dark"] .modal{background:var(--card);color:var(--ink);border-color:var(--line)}
+html[data-theme="dark"] .day.selected{background:#233e6b}
+html[data-theme="dark"] .pill{background:#243b66;color:#bdd5ff}
+html[data-theme="dark"] .notice{background:#392e20;border-color:#65502b;color:#ffda9b}
+html[data-theme="dark"] .authhero{background:linear-gradient(135deg,#0a1834,#183a74)}
+html[data-theme="dark"] .field label{color:var(--muted)}
+html[data-theme="dark"] .tag{background:#263e68;color:#bfd6ff}
+html[data-theme="dark"] .tag.completed{background:#1a4438;color:#91f5d0}
+html[data-theme="dark"] .tag.cancelled{background:#313b4a;color:#d0d7e2}
+html[data-theme="dark"] .lunar{color:#a7b9d4}
+body{transition:background-color .25s,color .25s}
+.metric,.panel,.btn,.day,.sidebar,.authcard{transition:background-color .22s,border-color .22s,box-shadow .22s,transform .18s}
+.metric:hover{transform:translateY(-3px);box-shadow:0 12px 35px #0c2c5b1c}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.04)}
+.btn:active{transform:scale(.98)}
+.nav button{transition:background .2s,transform .2s}
+.nav button:hover{transform:translateX(3px)}
+.authhero{background:radial-gradient(circle at 80% 18%,#417bd8 0,transparent 42%),linear-gradient(135deg,#0c2851,#2459ad)}
+.mark{box-shadow:0 9px 24px #1e6ad855}
+.header-avatar{display:inline-flex;align-items:center;justify-content:center}
+.avatar-img,.avatar-fallback{border-radius:50%;object-fit:cover;border:2px solid var(--line);flex-shrink:0}
+.avatar-fallback{display:inline-grid;place-items:center;background:linear-gradient(135deg,#477bff,#8c5aff);color:white;font-weight:800}
+.account-head{display:flex;align-items:center;gap:20px;margin-bottom:24px}
+.account-head h2{margin:0 0 8px}
+.account-panel{max-width:760px}
+.account-actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.theme-switch{white-space:nowrap}
+@media(max-width:740px){.theme-switch{padding:8px}.header-avatar .avatar-img,.header-avatar .avatar-fallback{width:30px!important;height:30px!important}}
+
+
+/* LE VAN TOAN / STUDIO EDITION V3 */
+:root{--bg:#f7f7f4;--card:#fff;--ink:#1f2422;--muted:#85887e;--line:#e9e8e0;--primary:#b58b35;--dark:#171b17;--radius:19px}
+body{letter-spacing:-.015em}
+.authpage{grid-template-columns:minmax(0,1.08fr) minmax(430px,.92fr);min-height:100vh;background:#f6f5f0}
+.authhero{position:relative;isolation:isolate;overflow:hidden;min-height:100vh;background:radial-gradient(ellipse at 85% 56%,#5e5125 0,transparent 29%),radial-gradient(ellipse at 25% 100%,#282819 0,transparent 40%),#111411!important;color:#f9f6ec;padding:36px clamp(35px,5vw,95px);justify-content:space-between;gap:0}
+.authhero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E")}
+.authhero::after{content:"";position:absolute;width:550px;height:550px;border:1px solid #e3bf7140;border-radius:50%;right:-210px;top:21%;box-shadow:0 0 0 75px #d3a74c08,0 0 0 155px #d3a74c08;pointer-events:none}
+.auth-ambient{position:absolute;pointer-events:none;border-radius:50%;filter:blur(12px)}
+.ambient-one{width:280px;height:280px;background:radial-gradient(circle,#caa34b55,transparent 70%);right:-100px;top:39%;animation:ambientFloat 11s ease-in-out infinite alternate}
+.ambient-two{width:280px;height:280px;background:radial-gradient(circle,#9581451c,transparent 70%);left:-120px;bottom:-120px;animation:ambientFloat 13s ease-in-out infinite alternate-reverse}
+@keyframes ambientFloat{to{transform:translate(-35px,42px)}}
+.hero-top,.hero-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;position:relative;z-index:1;font-size:10px;letter-spacing:.16em;color:#b7b2a0}
+.hero-top{border-bottom:1px solid #ffffff1c;padding-bottom:22px}.hero-back{color:#dfc58d}
+.hero-inner{position:relative;z-index:1;width:100%;max-width:780px;margin:auto 0}
+.authhero .brand{padding:0;gap:13px;margin-bottom:clamp(60px,10vh,140px)}
+.authhero .mark{background:linear-gradient(145deg,#e5be68,#a77a29);color:#15180f;border-radius:14px;box-shadow:0 12px 34px #b88b4030}
+.authhero .brand strong{font-size:16px;color:#fff}
+.authhero .brand small{display:block;color:#c8b996;letter-spacing:.13em}
+.eyebrow{display:flex;align-items:center;gap:12px;color:#d6b876;font-size:10px;font-weight:700;letter-spacing:.25em;margin-bottom:25px}
+.eyebrow-line{display:inline-block;width:30px;height:1px;background:#d6b876}
+.authhero h1{font-size:clamp(42px,4.3vw,79px);letter-spacing:-.07em;line-height:1.11;font-weight:800;max-width:800px;margin:0 0 27px}
+.authhero h1 em{font-style:normal;color:#e7bc63}
+.authhero .hero-copy p{font-size:14px;max-width:490px;line-height:2;color:#b8b9ad}
+.hero-benefits{display:flex;flex-wrap:wrap;gap:11px;margin-top:38px}
+.hero-benefits span{font-size:11px;color:#d9d0b8;border:1px solid #bfa9753b;background:#e1bd6b0a;padding:11px 13px;border-radius:100px}
+.hero-bottom{border-top:1px solid #ffffff1c;padding-top:22px}
+.authbox{position:relative;padding:70px 35px;display:flex;justify-content:center;align-items:center;background:radial-gradient(circle at 75% 12%,#e9e3d2,transparent 30%),#f7f6f2}
+.auth-controls{position:absolute;top:27px;right:30px}
+.auth-theme-toggle{background:#fff;border:1px solid #e7e2d5;border-radius:100px;padding:10px 15px;font-size:11px;color:#575344;box-shadow:0 4px 20px #27231a0a}
+.authcard{width:min(460px,100%);background:#fff;border:1px solid #e8e3d8;border-radius:26px;padding:clamp(24px,3vw,43px);box-shadow:0 30px 90px #37311b12;position:relative;overflow:hidden}
+.authcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#8b6828,#e7c46e,#a17827)}
+.authcard-brand{display:flex;align-items:center;gap:12px;padding-bottom:26px;border-bottom:1px solid #efede6;margin-bottom:30px}
+.auth-mini-logo{display:grid;place-items:center;width:38px;height:38px;background:#171a16;color:#e8bf64;border-radius:12px;font-size:20px}
+.authcard-brand strong{display:block;font-size:13px;letter-spacing:.11em}
+.authcard-brand small{display:block;font-size:9px;letter-spacing:.14em;color:#989387;margin-top:3px}
+.auth-welcome{font-size:10px;font-weight:800;color:#b58b35;letter-spacing:.18em;margin-bottom:10px}
+.authcard h2{font-size:clamp(25px,2.5vw,34px);letter-spacing:-.06em;margin:0 0 8px;font-weight:800;color:#25271f}
+.authcard .sub{color:#918e85;line-height:1.7}
+.auth-features{display:flex;gap:16px;flex-wrap:wrap;font-size:10px;color:#8c887e;margin:19px 0 24px}
+.authcard .field{margin:14px 0}
+.authcard label{font-size:11px;font-weight:700;color:#57554b;margin-bottom:7px}
+.authcard input{height:48px;border:1px solid #e5e1d7;border-radius:12px;background:#faf9f6;padding:0 15px;color:#24251f;outline:none;transition:box-shadow .2s,border-color .2s}
+.authcard input:focus{border-color:#c59b46;box-shadow:0 0 0 4px #caa14d22}
+.authcard .btn.primary{background:linear-gradient(100deg,#e3b94c,#c69525);border:0;color:#211d11;height:48px;border-radius:12px;margin-top:14px;font-weight:800;box-shadow:0 12px 25px #b9933635}
+.authcard .btn.primary:hover{filter:brightness(1.07);transform:translateY(-2px)}
+.authcard .link{color:#a67a20;font-weight:800}
+.authcard .notice{background:#faf7ef;border:1px solid #f0e5cd;color:#8e7b54;font-size:10px;border-radius:11px;padding:13px;line-height:1.7}
+.authcard-foot{display:flex;justify-content:space-between;gap:8px;font-size:9px;letter-spacing:.04em;color:#aaa497;border-top:1px solid #eeeae0;margin-top:24px;padding-top:20px}
+.sidebar{background:#171b17;color:#eee7d8}
+.sidebar .mark{background:linear-gradient(145deg,#e1bd67,#a67c30)}
+.nav button.active,.nav button:hover{background:#a982362b;color:#f4d68e}
+.btn.primary{background:#b88e37;border-color:#b88e37;color:#fff}
+.metric:hover,.panel:hover{box-shadow:0 12px 35px #54472813}
+html[data-theme="dark"]{--bg:#121512;--card:#1c211d;--ink:#f2eee4;--muted:#aaa99c;--line:#343a32;--primary:#d9b361}
+html[data-theme="dark"] .authbox{background:radial-gradient(circle at 70% 10%,#3a3220,transparent 34%),#161a16}
+html[data-theme="dark"] .authcard{background:#20241e;border-color:#3d3e32}
+html[data-theme="dark"] .authcard h2,html[data-theme="dark"] .authcard-brand strong{color:#f4efdf}
+html[data-theme="dark"] .authcard-brand{border-color:#373a30}
+html[data-theme="dark"] .authcard input{background:#191c18;color:#f5f0e4;border-color:#424538}
+html[data-theme="dark"] .authcard label{color:#d3cdbb}
+html[data-theme="dark"] .authcard .notice{background:#2a281e;border-color:#4b422e;color:#d5bd88}
+html[data-theme="dark"] .authcard-foot{border-color:#3b3b31}
+html[data-theme="dark"] .auth-theme-toggle{background:#272b23;border-color:#454735;color:#e8d9b7}
+html[data-theme="dark"] .authcard .btn.primary{color:#251c0b}
+@media(max-width:950px){.authpage{grid-template-columns:1fr}.authhero{min-height:420px;padding:28px 7%;gap:20px}.hero-inner{margin:25px 0}.authhero .brand{margin-bottom:30px}.authhero h1{font-size:clamp(35px,6vw,55px)}.authbox{padding:70px 22px}.authcard{max-width:530px}}
+@media(max-width:550px){.authhero{min-height:350px;padding:22px 24px}.hero-top,.hero-bottom{font-size:8px}.hero-version{display:none}.authhero .brand{margin-bottom:24px}.authhero h1{font-size:35px}.hero-copy p{font-size:12px!important}.hero-benefits{margin-top:18px;gap:6px}.hero-benefits span{font-size:9px;padding:8px}.authbox{padding:70px 14px 24px}.authcard{padding:25px 21px}.authcard-foot span{display:none}}
+@media(prefers-reduced-motion:reduce){.auth-ambient{animation:none!important}*{scroll-behavior:auto!important}}
+
+/* V3.1: genuine accessible dark/light switch in auth top-right */
+.theme-control{display:inline-flex;align-items:center;gap:11px;cursor:pointer;user-select:none;border:1px solid #e7e2d5;border-radius:999px;background:#fff;padding:8px 11px 8px 13px;box-shadow:0 8px 24px #1a190f12;transition:background .25s,border-color .25s}
+.theme-caption{font-size:11px;line-height:1.15;color:#666353;white-space:nowrap}
+.theme-caption strong{display:block;font-size:10px;margin-top:3px;color:#25271f}
+.theme-icon{font-size:16px;line-height:1}
+.theme-input{position:absolute!important;opacity:0!important;width:1px!important;height:1px!important;pointer-events:none}
+.theme-track{width:43px;height:25px;border-radius:30px;background:#dedcd5;position:relative;transition:background .24s;flex:none}
+.theme-thumb{width:19px;height:19px;border-radius:50%;position:absolute;left:3px;top:3px;background:#fff;box-shadow:0 2px 5px #0002;transition:transform .24s}
+.theme-input:checked + .theme-track{background:#c39a44}
+.theme-input:checked + .theme-track .theme-thumb{transform:translateX(18px)}
+.theme-input:focus-visible + .theme-track{outline:3px solid #b68d42;outline-offset:3px}
+html[data-theme="dark"] .theme-control{background:#292c25;border-color:#474838}
+html[data-theme="dark"] .theme-caption{color:#bbb7a8}
+html[data-theme="dark"] .theme-caption strong{color:#f6f1e6}
+html[data-theme="dark"] .theme-track{background:#4b4c42}
+html[data-theme="dark"] .theme-input:checked + .theme-track{background:#d6ac51}
+
+/* LE VAN TOAN PREMIUM V4 — auth polish */
+.authcard{box-shadow:0 30px 100px #1b190f1a,0 4px 16px #1b190f08;backdrop-filter:blur(18px)}
+.authcard-brand{margin-bottom:34px}
+.authcard h2{font-size:clamp(28px,2.6vw,37px)}
+.authcard .field label{font-size:12px}
+.password-label-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.password-label-row label{margin-bottom:8px}
+.forgot-link{background:transparent;border:0;padding:0 0 7px;color:#ae822b;font-size:11px;font-weight:700;text-decoration:underline;text-decoration-color:#b58b3550;text-underline-offset:3px;cursor:pointer}
+.forgot-link:hover{color:#e0ad42}
+.password-input-wrap{position:relative}
+.authcard .password-input-wrap input{width:100%;padding-right:57px}
+.password-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:39px;height:37px;border:0;border-radius:10px;background:#eae7de;color:#686452;display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s}
+.password-eye:hover,.password-eye.is-visible{background:#d9bd77;color:#292518}
+.password-eye:focus-visible,.forgot-link:focus-visible,.google-signin:focus-visible{outline:3px solid #bd9342;outline-offset:3px}
+.auth-separator{display:flex;align-items:center;gap:15px;color:#aaa498;font-size:11px;margin:23px 0 18px}
+.auth-separator:before,.auth-separator:after{content:"";height:1px;background:#eae6dd;flex:1}
+.google-signin{width:100%;display:flex;align-items:center;justify-content:center;gap:13px;position:relative;min-height:48px;border:1px solid #e2ded4;border-radius:13px;background:#fdfcf9;color:#282924;font-size:12px;font-weight:750;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.google-signin:hover{background:#f3f0e7;border-color:#d6c6a0;transform:translateY(-1px)}
+.google-g{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:white;border:1px solid #eae7df}
+.soon-label{position:absolute;right:12px;font-size:9px;color:#a3874d;background:#f6edda;padding:4px 6px;border-radius:5px}
+.auth-provider-note{font-size:10px;color:#9b9587;text-align:center;margin:9px 0 0;line-height:1.5}
+.auth-security{display:flex;gap:12px;flex-wrap:wrap;margin:23px 0 8px;color:#918b7b;font-size:10px}
+.authcard .notice{margin-top:14px}
+.authcard input::placeholder{color:#a8a498}
+html[data-theme="dark"] .forgot-link{color:#dfbd70}
+html[data-theme="dark"] .password-eye{background:#363b32;color:#d4cbb8}
+html[data-theme="dark"] .password-eye:hover,html[data-theme="dark"] .password-eye.is-visible{background:#ad8b49;color:#15170e}
+html[data-theme="dark"] .google-signin{background:#292d26;border-color:#48483b;color:#f2ede3}
+html[data-theme="dark"] .google-signin:hover{background:#36392e}
+html[data-theme="dark"] .google-g{background:#fff}
+html[data-theme="dark"] .soon-label{background:#403827;color:#e4c77d}
+html[data-theme="dark"] .auth-separator:before,html[data-theme="dark"] .auth-separator:after{background:#404337}
+html[data-theme="dark"] .auth-separator{color:#aaa597}
+html[data-theme="dark"] .auth-provider-note{color:#aba493}
+html[data-theme="dark"] .auth-security{color:#bdb6a5}
+@media(max-width:550px){.soon-label{right:7px;font-size:8px}.google-signin{gap:7px;font-size:11px}}
+
+/* V4.1 — force complete dark theme, including auth background */
+html[data-theme="dark"],html[data-theme="dark"] body{color-scheme:dark}
+html[data-theme="dark"] body{background:#121512;color:#f2eee4}
+html[data-theme="dark"] .authpage{background:#121512!important}
+html[data-theme="dark"] .authbox{background:radial-gradient(circle at 75% 12%,#38301d 0%,transparent 35%),#161a16!important}
+html[data-theme="dark"] .authcard{background:#20241e!important;border-color:#414437!important;box-shadow:0 35px 110px #0007}
+html[data-theme="dark"] .authcard h2,html[data-theme="dark"] .authcard-brand strong{color:#f4efdf!important}
+html[data-theme="dark"] .authcard input{background:#181c18!important;color:#f5f0e4!important;border-color:#44483c!important}
+html[data-theme="dark"] .authcard .sub{color:#b0ab9e}
+html[data-theme="dark"] .authcard .auth-features{color:#c6bca8}
+html[data-theme="dark"] .authcard .notice{background:#29271e!important;color:#e1c58b!important;border-color:#4b422e!important}
+html[data-theme="dark"] .authcard .authcard-foot{color:#a8a28e}
+html[data-theme="dark"] .authcard .auth-separator{color:#aaa597}
+html[data-theme="dark"] .authcard .google-signin{background:#292d26!important;color:#f2ede3!important;border-color:#48483b!important}
+html[data-theme="dark"] .authcard .auth-provider-note{color:#b5ad99}
+html[data-theme="dark"] .authcard .auth-security{color:#c6bca8}
+html[data-theme="dark"] .authcard .auth-welcome{color:#e7c476}
+html[data-theme="dark"] .authcard .btn.primary{color:#221a0b!important}
+html[data-theme="dark"] .authcard .password-eye{background:#363b32;color:#d4cbb8}
+html[data-theme="dark"] .theme-control{background:#292c25!important;border-color:#474838!important}
+html[data-theme="dark"] .theme-caption strong{color:#f6f1e6!important}
+html[data-theme="dark"] .main,html[data-theme="dark"] .app{background:#121512;color:#f2eee4}
+html[data-theme="dark"] .metric,html[data-theme="dark"] .panel{background:#1c211d;color:#f2eee4;border-color:#343a32}
+html[data-theme="dark"] .btn:not(.primary),html[data-theme="dark"] .day,html[data-theme="dark"] .modal,html[data-theme="dark"] input:not(.theme-input),html[data-theme="dark"] select,html[data-theme="dark"] textarea{background:#222820;color:#f2eee4;border-color:#42493e}
+html[data-theme="dark"] .day.selected{background:#3a3321}
+html[data-theme="dark"] .pill{background:#3c3421;color:#e8ca88}
+html[data-theme="dark"] .tag{background:#343c32;color:#e5d9bf}
+html[data-theme="dark"] .sidebar{background:#111510}
+html[data-theme="dark"] .nav button.active{background:#8b713342;color:#f5d68e}
+html[data-theme="dark"] .sub,html[data-theme="dark"] .metric .label,html[data-theme="dark"] th{color:#aaa99c}
+</style></head><body><div id="auth" class="authpage"><section class="authhero"><div class="auth-ambient ambient-one"></div><div class="auth-ambient ambient-two"></div><div class="hero-top"><span class="hero-back">✦ &nbsp; CREATIVE WORKSPACE</span><span class="hero-version">LE VAN TOAN / 2026</span></div><div class="hero-inner"><div class="brand"><div class="mark">📷</div><div><strong>LE VAN TOAN</strong><small>PHOTOGRAPHY MANAGEMENT</small></div></div><div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span> PHOTOGRAPHY BUSINESS SUITE</div><h1>Để mỗi khoảnh khắc<br><em>đều có kế hoạch.</em></h1><p>Một không gian tinh gọn để quản lý lịch chụp, khách hàng và doanh thu — dành riêng cho người làm sáng tạo.</p><div class="hero-benefits"><span>◈ Lịch chụp thông minh</span><span>◈ Khách hàng riêng tư</span><span>◈ Theo dõi doanh thu</span></div></div></div><div class="hero-bottom"><span>BUILT FOR PHOTOGRAPHERS</span><span>01 — YOUR CREATIVE SPACE</span></div></section><section class="authbox"><div class="auth-controls"><label class="theme-control" for="authThemeSwitch"><span class="theme-icon" aria-hidden="true">☀️</span><span class="theme-caption">Giao diện <strong id="authThemeLabel">Sáng</strong></span><input id="authThemeSwitch" class="theme-input" type="checkbox" role="switch" aria-label="Bật chế độ tối"><span class="theme-track" aria-hidden="true"><span class="theme-thumb"></span></span></label></div><div class="authcard"><div class="authcard-brand"><span class="auth-mini-logo">✦</span><div><strong>LE VAN TOAN</strong><small>STUDIO MANAGEMENT</small></div></div><div class="auth-welcome">KHÔNG GIAN CỦA BẠN</div><h2 id="authTitle">Chào mừng trở lại</h2><p class="sub" id="authSub">Đăng nhập để tiếp tục hành trình sáng tạo của bạn.</p><div class="auth-features"><span>✧ Bảo mật riêng tư</span><span>◷ Đồng bộ công việc</span></div><form id="authForm"><div id="nameField" class="field hidden"><label>Họ và tên</label><input id="authName" autocomplete="name"></div><div class="field"><label>Email</label><input id="authEmail" type="email" autocomplete="email" required></div><div class="field password-field"><div class="password-label-row"><label for="authPassword">Mật khẩu</label><button id="forgotPassword" class="forgot-link" type="button">Quên mật khẩu?</button></div><div class="password-input-wrap"><input id="authPassword" type="password" minlength="12" autocomplete="current-password" required placeholder="Nhập mật khẩu của bạn"><button id="showPassword" class="password-eye" type="button" aria-label="Hiện mật khẩu" aria-pressed="false" title="Hiện mật khẩu"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div><button class="btn primary" type="submit" id="authSubmit">Đăng nhập</button></form><div class="auth-separator"><span>hoặc tiếp tục với</span></div><button id="googleLogin" class="google-signin" type="button"><span class="google-g" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5Z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.27 5.48-4.8 7.18l7.73 6C44.38 38.03 46.98 31.85 46.98 24.55Z"/><path fill="#FBBC05" d="M10.53 28.59A14.4 14.4 0 0 1 9.75 24c0-1.59.27-3.13.77-4.59l-7.98-6.2A23.87 23.87 0 0 0 0 24c0 3.87.93 7.53 2.56 10.78l7.97-6.19Z"/><path fill="#34A853" d="M24 48c6.48 0 11.92-2.13 15.88-5.8l-7.73-6c-2.15 1.45-4.92 2.3-8.15 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48Z"/></svg></span><span>Tiếp tục với Google</span><span class="soon-label">Sắp có</span></button><p class="auth-provider-note">Đăng nhập Google cần kết nối OAuth với hệ thống tài khoản.</p><p class="sub" style="margin-top:20px"><span id="authSwitchText">Chưa có tài khoản?</span> <button class="link" id="authSwitch">Đăng ký ngay</button></p><div class="auth-security"><span>✧ Dữ liệu của bạn được lưu riêng tư</span><span>✦ Đăng nhập bảo mật</span></div><p class="notice">🔒 Mỗi tài khoản có dữ liệu riêng, được bảo vệ bằng đăng nhập an toàn.</p><div class="authcard-foot">© 2026 LE VAN TOAN <span>CRAFTED FOR CREATORS ✦</span></div></div></section></div>
+<div id="app" class="app hidden"><aside class="sidebar" id="sidebar"><div class="brand"><div class="mark">📷</div><div><strong>LE VAN TOAN</strong><small>PHOTOGRAPHY MANAGEMENT</small></div></div><nav class="nav" id="nav"><button data-page="dashboard" class="active"><span>▦</span>Tổng quan</button><button data-page="calendar"><span>▣</span>Lịch chụp</button><button data-page="jobs"><span>▤</span>Công việc</button><button data-page="customers"><span>♧</span>Khách hàng</button><button data-page="statistics"><span>◴</span>Thống kê</button><button data-page="notifications"><span>♢</span>Thông báo</button><button data-page="admin" id="adminNav" class="hidden"><span>⚙</span>Quản trị</button><button data-page="account"><span>◉</span>Tài khoản</button></nav><div class="sidefoot">© 2026 LE VAN TOAN<br>Cloudflare Workers + D1</div></aside><main class="main"><header class="top"><div><button class="btn mobilemenu" id="menuBtn">☰ Menu</button><h1 id="pageTitle">Tổng quan</h1><div class="sub" id="welcome">Không gian làm việc của bạn</div></div><div class="top-actions"><button class="btn theme-switch" id="themeToggle" type="button">🌙 Tối</button><span id="headerAvatar" class="header-avatar"></span><span class="pill" id="userBadge">Thành viên</span><button class="btn primary" id="quickAdd">+ Thêm lịch chụp</button></div></header><section id="pageContent"></section></main></div><div id="modalHost"></div><div id="toast" class="toast hidden" role="status"></div><script>// Chỉnh API_BASE khi đổi tên miền backend. Không đặt khóa bí mật trong file này.
+const API_BASE='https://toanart-lichchup-api.toanluumy.workers.dev';
+
+
+let token=sessionStorage.getItem('lvt_token')||'';
+const setToken=v=>{token=v||'';if(token)sessionStorage.setItem('lvt_token',token);else sessionStorage.removeItem('lvt_token')};
+const hasToken=()=>!!token;
+async function api(path,{method='GET',data}={}){let response;try{response=await fetch(API_BASE+path,{method,headers:{...(data!==undefined?{'Content-Type':'application/json'}:{}),...(token?{Authorization:'Bearer '+token}:{})},...(data!==undefined?{body:JSON.stringify(data)}:{})})}catch{throw new Error('Không kết nối được API. Kiểm tra Internet và cấu hình CORS của Worker.')};let result;try{result=await response.json()}catch{throw new Error('Máy chủ trả về dữ liệu không hợp lệ')};if(!response.ok)throw new Error(result.error||result.message||`Lỗi HTTP ${response.status}`);return result}
+const listData=(result,key)=>Array.isArray(result)?result:Array.isArray(result?.[key])?result[key]:Array.isArray(result?.items)?result.items:[];
+
+const $=(q,root=document)=>root.querySelector(q);const $$=(q,root=document)=>[...root.querySelectorAll(q)];
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=v=>new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(Number(v)||0);
+const dateISO=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const prettyDate=s=>{if(!s)return '—';const [y,m,d]=String(s).slice(0,10).split('-');return `${d}/${m}/${y}`};
+const statusText=s=>({pending:'Chờ thực hiện',confirmed:'Đã xác nhận',in_progress:'Đang thực hiện',completed:'Hoàn thành',cancelled:'Đã hủy'}[s]||s||'Chờ thực hiện');
+function toast(message){const el=$('#toast');el.textContent=message;el.classList.remove('hidden');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.add('hidden'),4500)}
+function modal(title,content,onSubmit){const host=$('#modalHost');host.innerHTML=`<div class="overlay"><div class="modal"><div class="panelhead"><h2>${esc(title)}</h2><button class="btn" type="button" id="closeModal">✕</button></div><form id="modalForm">${content}<div class="actions"><button type="button" class="btn" id="cancelModal">Hủy</button><button type="submit" class="btn primary">Lưu thông tin</button></div></form></div></div>`;$('#closeModal').onclick=$('#cancelModal').onclick=()=>host.innerHTML='';$('#modalForm').onsubmit=async e=>{e.preventDefault();const b=$('#modalForm button[type=submit]');b.disabled=true;try{await onSubmit(new FormData(e.currentTarget));host.innerHTML=''}catch(err){toast(err.message)}finally{b.disabled=false}}}
+const field=(label,name,value='',type='text',extra='')=>`<div class="field"><label>${esc(label)}</label><input name="${name}" type="${type}" value="${esc(value)}" ${extra}></div>`;
+
+
+const state={user:null,jobs:[],customers:[],users:[],page:'dashboard',month:new Date(),selected:dateISO(new Date()),authMode:'login'};
+const titles={dashboard:'Tổng quan',calendar:'Lịch chụp',jobs:'Quản lý công việc',customers:'Khách hàng',statistics:'Thống kê',notifications:'Thông báo',admin:'Quản trị hệ thống',account:'Tài khoản'};
+const themeKey='lvt-theme';
+const avatarKey=()=>`lvt-avatar-${state.user?.id||'guest'}`;
+function applyTheme(mode){
+  const dark=mode==='dark';
+  document.documentElement.dataset.theme=dark?'dark':'light';
+  document.body.classList.toggle('dark-mode',dark);
+  try{localStorage.setItem(themeKey,dark?'dark':'light')}catch{}
+  const appToggle=document.querySelector('#themeToggle');
+  if(appToggle)appToggle.textContent=dark?'☀️ Sáng':'🌙 Tối';
+  const authSwitch=document.querySelector('#authThemeSwitch');
+  if(authSwitch){authSwitch.checked=dark;authSwitch.setAttribute('aria-checked',String(dark));}
+  const authLabel=document.querySelector('#authThemeLabel');
+  if(authLabel)authLabel.textContent=dark?'Tối':'Sáng';
+  const authIcon=document.querySelector('.theme-icon');
+  if(authIcon)authIcon.textContent=dark?'🌙':'☀️';
+}
+
+function getAvatar(){return localStorage.getItem(avatarKey())||'';}
+function avatarMarkup(size=44){const url=getAvatar();return url?`<img class="avatar-img" src="${url}" alt="Ảnh đại diện" style="width:${size}px;height:${size}px">`:`<span class="avatar-fallback" style="width:${size}px;height:${size}px">${esc((state.user?.name||'L').trim().slice(0,1).toUpperCase())}</span>`;}
+function refreshAvatar(){document.querySelector('#headerAvatar').innerHTML=avatarMarkup(36);}
+applyTheme(localStorage.getItem(themeKey)==='dark'?'dark':'light');
+document.querySelector('#themeToggle').addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+document.querySelector('#authThemeSwitch').addEventListener('change',e=>applyTheme(e.currentTarget.checked?'dark':'light'));
+const today=()=>dateISO(new Date());const statusBadge=s=>`<span class="tag ${esc(s)}">${esc(statusText(s))}</span>`;
+const getJobs=async()=>{const r=await api('/api/jobs');state.jobs=listData(r,'jobs')};const getCustomers=async()=>{const r=await api('/api/customers');state.customers=listData(r,'customers')};
+const getUsers=async()=>{const r=await api('/api/admin/users');state.users=listData(r,'users')};
+const refresh=async()=>{await Promise.all([getJobs(),getCustomers()]);if(state.page==='admin'&&state.user?.role==='admin')await getUsers();render()};
+function showApp(){ $('#auth').classList.add('hidden');$('#app').classList.remove('hidden');$('#welcome').textContent=`Xin chào, ${state.user?.name||'thành viên'} • ${new Date().toLocaleDateString('vi-VN')}`;$('#userBadge').textContent=state.user?.role==='admin'?'Quản trị viên':'Thành viên';$('#adminNav').classList.toggle('hidden',state.user?.role!=='admin');refreshAvatar();navigate('dashboard')}
+function showAuth(){state.user=null;state.jobs=[];state.customers=[];$('#app').classList.add('hidden');$('#auth').classList.remove('hidden');}
+async function restore(){if(!hasToken())return;try{const r=await api('/api/me');state.user=r.user||r;showApp();await refresh()}catch{setToken('');showAuth()}}
+function switchAuth(){state.authMode=state.authMode==='login'?'register':'login';const reg=state.authMode==='register';$('#nameField').classList.toggle('hidden',!reg);$('#authName').required=reg;$('#authTitle').textContent=reg?'Tạo tài khoản mới':'Chào mừng trở lại';$('#authSub').textContent=reg?'Bắt đầu quản lý lịch chụp của riêng bạn.':'Đăng nhập để quản lý công việc của bạn.';$('#authSubmit').textContent=reg?'Đăng ký':'Đăng nhập';$('#authSwitchText').textContent=reg?'Đã có tài khoản?':'Chưa có tài khoản?';$('#authSwitch').textContent=reg?'Đăng nhập':'Đăng ký ngay';$('#authPassword').autocomplete=reg?'new-password':'current-password';$('#forgotPassword').classList.toggle('hidden',reg)}
+const passwordInput=$('#authPassword');
+const showPasswordBtn=$('#showPassword');
+showPasswordBtn.addEventListener('click',()=>{
+ const visible=passwordInput.type==='password';
+ passwordInput.type=visible?'text':'password';
+ showPasswordBtn.setAttribute('aria-pressed',String(visible));
+ showPasswordBtn.setAttribute('aria-label',visible?'Ẩn mật khẩu':'Hiện mật khẩu');
+ showPasswordBtn.title=visible?'Ẩn mật khẩu':'Hiện mật khẩu';
+ showPasswordBtn.classList.toggle('is-visible',visible);
+});
+$('#forgotPassword').addEventListener('click',()=>{
+ alert('Chức năng khôi phục mật khẩu qua email chưa được cấu hình. Để sử dụng, cần bổ sung API đặt lại mật khẩu và dịch vụ gửi email. Không gửi mật khẩu cho bất kỳ ai.');
+});
+$('#googleLogin').addEventListener('click',()=>{
+ alert('Đăng nhập Google chưa được kết nối. Cần thiết lập Google OAuth và API xác thực trên Cloudflare trước khi sử dụng.');
+});
+$('#authSwitch').onclick=switchAuth;
+$('#authForm').onsubmit=async e=>{e.preventDefault();const b=$('#authSubmit');b.disabled=true;try{const email=$('#authEmail').value.trim().toLowerCase(),password=$('#authPassword').value;if(state.authMode==='register'){await api('/api/auth/register',{method:'POST',data:{name:$('#authName').value.trim(),email,password}});toast('Đăng ký thành công. Hãy đăng nhập.');switchAuth();$('#authPassword').value=''}else{const r=await api('/api/auth/login',{method:'POST',data:{email,password}});if(!r.token)throw new Error('API không trả về token');setToken(r.token);const me=await api('/api/me');state.user=me.user||me;$('#authPassword').value='';showApp();await refresh()}}catch(err){toast(err.message)}finally{b.disabled=false}};
+$('#nav').onclick=e=>{const btn=e.target.closest('[data-page]');if(btn)navigate(btn.dataset.page)};$('#menuBtn').onclick=()=>$('#sidebar').classList.toggle('open');$('#quickAdd').onclick=()=>jobModal();
+function navigate(page){if(page==='admin'&&state.user?.role!=='admin')return;state.page=page;$$('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));$('#sidebar').classList.remove('open');$('#pageTitle').textContent=titles[page];render();if(page==='admin')getUsers().then(render).catch(e=>toast(e.message))}
+const sum=(arr,key)=>arr.reduce((s,x)=>s+(Number(x[key])||0),0);const metrics=()=>{const active=state.jobs.filter(j=>j.status!=='cancelled'),completed=active.filter(j=>j.status==='completed');return [{label:'Tổng lịch chụp',value:state.jobs.length,sub:'Tất cả công việc'},{label:'Lịch đã hoàn thành',value:completed.length,sub:'Đã kết thúc'},{label:'Doanh thu dự kiến',value:money(sum(active,'amount')),sub:'Không tính lịch đã hủy'},{label:'Tiền cọc đã ghi nhận',value:money(sum(active,'deposit')),sub:'Theo dữ liệu đã nhập'}]};
+function metricHTML(){return `<div class="grid4">${metrics().map(m=>`<div class="metric"><div class="label">${m.label}</div><div class="value">${m.value}</div><div class="accent">${m.sub}</div></div>`).join('')}</div>`}
+function render(){let html='';switch(state.page){case'dashboard':html=metricHTML()+`<div class="layout2"><div class="panel">${calendarHTML()}</div><div class="panel">${dayJobsHTML(state.selected)}</div></div>`;break;case'calendar':html=`<div class="layout2"><div class="panel">${calendarHTML()}</div><div class="panel">${dayJobsHTML(state.selected)}</div></div>`;break;case'jobs':html=jobsHTML();break;case'customers':html=customersHTML();break;case'statistics':html=statsHTML();break;case'notifications':html=notificationsHTML();break;case'admin':html=adminHTML();break;case'account':html=accountHTML();break;}$('#pageContent').innerHTML=html;bindPage()}
+function calendarHTML(){const m=state.month,y=m.getFullYear(),mo=m.getMonth(),first=new Date(y,mo,1),offset=(first.getDay()+6)%7,days=new Date(y,mo+1,0).getDate();let cells='';for(let i=0;i<42;i++){const d=new Date(y,mo,i-offset+1),iso=dateISO(d),count=state.jobs.filter(j=>String(j.shoot_date||'').slice(0,10)===iso),other=d.getMonth()!==mo;cells+=`<button class="day ${other?'other':''} ${iso===state.selected?'selected':''} ${iso===today()?'today':''}" data-date="${iso}"><span class="num">${d.getDate()}</span><span class="lunar">${count.length?`${count.length} lịch chụp`:''}</span><span class="dots">${count.slice(0,5).map(j=>`<span class="dot ${esc(j.status)}"></span>`).join('')}</span></button>`}return `<div class="panelhead"><h2>Tháng ${mo+1}/${y}</h2><div class="controls"><button class="btn" data-month="-1">‹</button><button class="btn" data-month="0">Hôm nay</button><button class="btn" data-month="1">›</button></div></div><div class="week">${['T2','T3','T4','T5','T6','T7','CN'].map(s=>`<span>${s}</span>`).join('')}</div><div class="days">${cells}</div>`}
+function dayJobsHTML(date){const list=state.jobs.filter(j=>String(j.shoot_date||'').slice(0,10)===date).sort((a,b)=>String(a.start_time||'').localeCompare(String(b.start_time||'')));return `<div class="panelhead"><h2>Lịch ngày ${prettyDate(date)}</h2><button class="btn primary" data-add-date="${date}">+ Thêm</button></div>${list.length?list.map(j=>`<div class="entry"><div><strong>${esc(j.title)}</strong><small>${esc(j.start_time||'--:--')} · ${esc(j.location||'Chưa có địa điểm')}<br>${money(j.amount)} · Cọc ${money(j.deposit)}</small><div style="margin-top:6px">${statusBadge(j.status)}</div></div><button class="btn" data-edit-job="${esc(j.id)}">Sửa</button></div>`).join(''):'<div class="empty">Ngày này chưa có lịch chụp.</div>'}`}
+function jobsHTML(){return `<div class="panel"><div class="panelhead"><h2>Danh sách lịch chụp</h2><button class="btn primary" data-add-date="${today()}">+ Tạo lịch</button></div><div class="toolbar"><input id="jobSearch" placeholder="Tìm tên công việc, địa điểm..."><select id="jobStatus"><option value="">Tất cả trạng thái</option>${['pending','confirmed','in_progress','completed','cancelled'].map(s=>`<option value="${s}">${statusText(s)}</option>`).join('')}</select></div><div class="tablewrap"><table><thead><tr><th>Ngày</th><th>Công việc</th><th>Khách hàng</th><th>Tổng tiền</th><th>Cọc</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody id="jobRows"></tbody></table></div></div>`}
+function drawJobs(){const q=($('#jobSearch')?.value||'').toLowerCase(),status=$('#jobStatus')?.value||'';const items=state.jobs.filter(j=>(!status||j.status===status)&&`${j.title} ${j.location} ${j.customer_name}`.toLowerCase().includes(q)).sort((a,b)=>String(b.shoot_date).localeCompare(String(a.shoot_date)));$('#jobRows').innerHTML=items.length?items.map(j=>`<tr><td>${prettyDate(j.shoot_date)}</td><td><strong>${esc(j.title)}</strong><br><span class="sub">${esc(j.location||'')}</span></td><td>${esc(j.customer_name||customerName(j.customer_id))}</td><td>${money(j.amount)}</td><td>${money(j.deposit)}</td><td>${statusBadge(j.status)}</td><td><button class="btn" data-edit-job="${esc(j.id)}">Sửa</button><button class="btn danger" data-del-job="${esc(j.id)}">Xóa</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty">Chưa có công việc phù hợp.</td></tr>'}
+const customerName=id=>state.customers.find(c=>String(c.id)===String(id))?.name||'—';
+function customersHTML(){return `<div class="panel"><div class="panelhead"><h2>Danh bạ khách hàng</h2><button class="btn primary" id="addCustomer">+ Thêm khách hàng</button></div><div class="toolbar"><input id="customerSearch" placeholder="Tìm theo tên hoặc số điện thoại..."></div><div class="tablewrap"><table><thead><tr><th>Họ tên</th><th>Số điện thoại</th><th>Ghi chú</th><th>Số lịch</th><th>Thao tác</th></tr></thead><tbody id="customerRows"></tbody></table></div></div>`}
+function drawCustomers(){const q=($('#customerSearch')?.value||'').toLowerCase(),items=state.customers.filter(c=>`${c.name} ${c.phone}`.toLowerCase().includes(q));$('#customerRows').innerHTML=items.length?items.map(c=>`<tr><td><strong>${esc(c.name)}</strong></td><td>${esc(c.phone||'—')}</td><td>${esc(c.notes||'—')}</td><td>${state.jobs.filter(j=>String(j.customer_id)===String(c.id)).length}</td><td><button class="btn" data-edit-customer="${esc(c.id)}">Sửa</button><button class="btn danger" data-del-customer="${esc(c.id)}">Xóa</button></td></tr>`).join(''):'<tr><td colspan="5" class="empty">Chưa có khách hàng.</td></tr>'}
+function statsHTML(){const grouped={};state.jobs.filter(j=>j.status!=='cancelled').forEach(j=>{const key=String(j.shoot_date||'').slice(0,7);if(!/^\d{4}-\d{2}$/.test(key))return;grouped[key]??={count:0,revenue:0,deposit:0};grouped[key].count++;grouped[key].revenue+=Number(j.amount)||0;grouped[key].deposit+=Number(j.deposit)||0});return metricHTML()+`<div class="panel"><div class="panelhead"><h2>Thống kê theo tháng</h2></div><div class="tablewrap"><table><thead><tr><th>Tháng</th><th>Số lịch</th><th>Doanh thu dự kiến</th><th>Tiền cọc</th><th>Còn lại dự kiến</th></tr></thead><tbody>${Object.entries(grouped).sort((a,b)=>b[0].localeCompare(a[0])).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v.count}</td><td>${money(v.revenue)}</td><td>${money(v.deposit)}</td><td>${money(v.revenue-v.deposit)}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">Chưa có dữ liệu.</td></tr>'}</tbody></table></div><p class="sub">Các số liệu dựa trên lịch chụp đã nhập, không phải doanh thu thực thu từ hệ thống thanh toán.</p></div>`}
+function notificationsHTML(){const next=new Date();next.setDate(next.getDate()+1);const dates=[today(),dateISO(next)],list=state.jobs.filter(j=>dates.includes(String(j.shoot_date||'').slice(0,10))&&j.status!=='cancelled');return `<div class="panel"><div class="panelhead"><h2>Lịch sắp diễn ra</h2></div>${list.length?list.map(j=>`<div class="entry"><div><strong>${esc(j.title)}</strong><small>${prettyDate(j.shoot_date)} · ${esc(j.start_time||'')} · ${esc(j.location||'')}</small></div>${statusBadge(j.status)}</div>`).join(''):'<div class="empty">Không có lịch chụp hôm nay hoặc ngày mai.</div>'}<p class="sub">Đây là thông báo hiển thị khi mở website; chưa có thông báo đẩy khi đóng trình duyệt.</p></div>`}
+function adminHTML(){return `<div class="panel"><div class="panelhead"><h2>Quản lý người dùng</h2><button class="btn" id="reloadUsers">Làm mới</button></div><div class="tablewrap"><table><thead><tr><th>Tên</th><th>Email</th><th>Quyền</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody>${state.users.map(u=>`<tr><td>${esc(u.name)}</td><td>${esc(u.email)}</td><td>${esc(u.role)}</td><td>${u.is_active?'Hoạt động':'Đã khóa'}</td><td>${String(u.id)===String(state.user?.id)?'Tài khoản của bạn':`<button class="btn" data-toggle-user="${esc(u.id)}">${u.is_active?'Khóa':'Mở khóa'}</button>`}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">Chưa tải được danh sách người dùng.</td></tr>'}</tbody></table></div></div>`}
+function accountHTML(){return `<div class="panel account-panel"><div class="account-head">${avatarMarkup(96)}<div><h2>${esc(state.user?.name)}</h2><p class="sub">${esc(state.user?.email)} · ${esc(state.user?.role)}</p></div></div><div class="field"><label>Thay đổi ảnh đại diện</label><input id="avatarUpload" type="file" accept="image/png,image/jpeg,image/webp"><small class="sub">Ảnh JPEG, PNG hoặc WebP, tối đa 1 MB. Lưu trên trình duyệt này.</small></div><div class="account-actions"><button class="btn" id="removeAvatar">Xóa ảnh đại diện</button><button class="btn danger" id="logoutBtn">Đăng xuất</button></div><p class="notice">Ảnh đại diện hiện lưu cục bộ trên trình duyệt, chưa đồng bộ giữa các thiết bị. Để đồng bộ cần thêm dịch vụ lưu ảnh và API riêng.</p></div>`}
+function bindPage(){const root=$('#pageContent');root.onclick=async e=>{const t=e.target.closest('button');if(!t)return;try{if(t.dataset.month!==undefined){const n=Number(t.dataset.month);state.month=n===0?new Date():new Date(state.month.getFullYear(),state.month.getMonth()+n,1);if(n===0)state.selected=today();render()}else if(t.dataset.date){state.selected=t.dataset.date;state.month=new Date(t.dataset.date+'T12:00:00');render()}else if(t.dataset.addDate)jobModal(null,t.dataset.addDate);else if(t.dataset.editJob)jobModal(state.jobs.find(j=>String(j.id)===t.dataset.editJob));else if(t.dataset.delJob)await deleteItem('jobs',t.dataset.delJob,'lịch chụp');else if(t.id==='addCustomer')customerModal();else if(t.dataset.editCustomer)customerModal(state.customers.find(c=>String(c.id)===t.dataset.editCustomer));else if(t.dataset.delCustomer)await deleteItem('customers',t.dataset.delCustomer,'khách hàng');else if(t.dataset.toggleUser){const u=state.users.find(u=>String(u.id)===t.dataset.toggleUser);if(u&&confirm(`Bạn chắc chắn muốn ${u.is_active?'khóa':'mở khóa'} tài khoản ${u.email}?`)){await api(`/api/admin/users/${encodeURIComponent(u.id)}/status`,{method:'PATCH',data:{is_active:!Boolean(u.is_active)}});await getUsers();render();toast('Đã cập nhật trạng thái')}}else if(t.id==='reloadUsers'){await getUsers();render()}else if(t.id==='removeAvatar'){localStorage.removeItem(avatarKey());refreshAvatar();render();toast('Đã xóa ảnh đại diện')}else if(t.id==='logoutBtn'){try{await api('/api/auth/logout',{method:'POST'})}catch{}setToken('');showAuth();toast('Đã đăng xuất')}}catch(err){toast(err.message)}};$('#jobSearch')?.addEventListener('input',drawJobs);$('#jobStatus')?.addEventListener('change',drawJobs);$('#customerSearch')?.addEventListener('input',drawCustomers);if(state.page==='jobs')drawJobs();if(state.page==='customers')drawCustomers();
+$('#avatarUpload')?.addEventListener('change',e=>{const file=e.target.files?.[0];if(!file)return;if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>1024*1024){toast('Chỉ nhận JPEG/PNG/WebP tối đa 1 MB');return;}const reader=new FileReader();reader.onload=()=>{try{localStorage.setItem(avatarKey(),String(reader.result));refreshAvatar();render();toast('Đã cập nhật ảnh đại diện')}catch{toast('Trình duyệt không đủ dung lượng lưu ảnh')}};reader.readAsDataURL(file);});
+}
+async function deleteItem(kind,id,label){if(!confirm(`Xóa ${label} này? Thao tác không thể hoàn tác.`))return;await api(`/api/${kind}/${encodeURIComponent(id)}`,{method:'DELETE'});toast('Đã xóa thành công');await refresh()}
+function customerModal(c){modal(c?'Sửa khách hàng':'Thêm khách hàng',`<div class="formgrid">${field('Họ tên *','name',c?.name,'text','required maxlength="120"')}${field('Số điện thoại','phone',c?.phone,'tel','maxlength="30"')}<div class="field full"><label>Ghi chú</label><textarea name="notes" rows="3">${esc(c?.notes||'')}</textarea></div></div>`,async f=>{const data={name:String(f.get('name')).trim(),phone:String(f.get('phone')).trim(),notes:String(f.get('notes')).trim()};await api(c?`/api/customers/${encodeURIComponent(c.id)}`:'/api/customers',{method:c?'PUT':'POST',data});toast('Đã lưu khách hàng');await refresh()})}
+function jobModal(j,day=today()){
+ const date=j?.shoot_date?String(j.shoot_date).slice(0,10):day;
+ const options=state.customers.map(c=>`<option value="${esc(c.id)}" ${String(j?.customer_id)===String(c.id)?'selected':''}>${esc(c.name)}</option>`).join('');
+ modal(j?'Chỉnh sửa lịch chụp':'Thêm lịch chụp',`<div class="formgrid">
+ ${field('Tên công việc *','title',j?.title,'text','required maxlength="150"')}
+ <div class="field"><label>Khách hàng đã có (không bắt buộc)</label><select name="customer_id"><option value="">— Chọn hoặc nhập khách mới —</option>${options}</select></div>
+ ${field('Tên khách hàng mới','new_customer_name','','text','maxlength="120" placeholder="Nhập trực tiếp tên khách hàng"')}
+ ${field('Số điện thoại khách mới','new_customer_phone','','tel','maxlength="30" placeholder="Không bắt buộc"')}
+ ${field('Ngày chụp *','shoot_date',date,'date','required')}
+ ${field('Giờ bắt đầu','start_time',j?.start_time||'','time')}
+ ${field('Giờ kết thúc','end_time',j?.end_time||'','time')}
+ ${field('Địa điểm','location',j?.location,'text')}
+ ${field('Tổng tiền (VNĐ)','amount',j?.amount??0,'number','min="0" max="1000000000000" step="1"')}
+ ${field('Tiền cọc (VNĐ)','deposit',j?.deposit??0,'number','min="0" max="1000000000000" step="1"')}
+ <div class="field"><label>Trạng thái</label><select name="status">${['pending','in_progress','completed','cancelled'].map(s=>`<option value="${s}" ${j?.status===s?'selected':''}>${statusText(s)}</option>`).join('')}</select></div>
+ <div class="field"><label>Thanh toán</label><select name="payment_status">${['unpaid','partial','paid'].map(s=>`<option value="${s}" ${j?.payment_status===s?'selected':''}>${{unpaid:'Chưa thanh toán',partial:'Thanh toán một phần',paid:'Đã thanh toán'}[s]}</option>`).join('')}</select></div>
+ <div class="field full"><label>Ghi chú</label><textarea name="notes" rows="2">${esc(j?.notes||'')}</textarea></div></div><p class="sub">Chọn khách cũ hoặc nhập tên khách mới. Nếu nhập tên mới, hệ thống sẽ tự tạo khách hàng.</p>`,async f=>{
+ const data=Object.fromEntries(f.entries());
+ const newName=String(data.new_customer_name||'').trim();
+ const newPhone=String(data.new_customer_phone||'').trim();
+ delete data.new_customer_name;delete data.new_customer_phone;
+ data.amount=Number(data.amount);data.deposit=Number(data.deposit);
+ if(!Number.isSafeInteger(data.amount)||!Number.isSafeInteger(data.deposit)||data.amount<0||data.deposit<0)throw new Error('Số tiền phải là số nguyên không âm');
+ if(data.deposit>data.amount)throw new Error('Tiền cọc không được lớn hơn tổng tiền');
+ if(data.start_time&&data.end_time&&data.end_time<data.start_time)throw new Error('Giờ kết thúc phải sau giờ bắt đầu');
+ if(newName){
+   const existing=state.customers.find(c=>c.name.trim().toLocaleLowerCase('vi')===newName.toLocaleLowerCase('vi')&&(!newPhone||c.phone===newPhone));
+   if(existing){data.customer_id=existing.id;}
+   else {const created=await api('/api/customers',{method:'POST',data:{name:newName,phone:newPhone}});data.customer_id=created.id;}
+ }
+ await api(j?`/api/jobs/${encodeURIComponent(j.id)}`:'/api/jobs',{method:j?'PUT':'POST',data});
+ toast('Đã lưu lịch chụp');await refresh();
+ });
+}
+
+restore();
+</script></body></html>
