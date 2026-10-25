@@ -1,0 +1,43 @@
+
+# LE VAN TOAN - Git Ignore
+
+# API Keys và thông tin bí mật
+.env
+.env.*
+!.env.example
+*.secret
+secrets.json
+credentials.json
+
+# Cloudflare / Wrangler
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Sao lưu database D1
+backup.sql
+backup-*.sql
+*.sqlite
+*.sqlite3
+*.db
+backups/
+
+# Thư mục thư viện
+node_modules/
+dist/
+.cache/
+
+# Log
+*.log
+npm-debug.log*
+
+# File tạm hệ thống
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# Cấu hình trình soạn thảo
+.vscode/
+.idea/
