@@ -491,24 +491,27 @@ html[data-theme='dark'] .security-card,html[data-theme='dark'] .session-entry{bo
  #app .day{min-height:61px;padding:5px 3px}
 }
 @media(prefers-reduced-motion:reduce){.v13-confirm-dialog{animation:none!important}#app .day{transition:none!important}}
-/* V13.3 - Thu nhỏ ô chọn tháng */
+/* Cân lại ô chọn tháng trên iPhone */
 @media (max-width: 740px) {
   .stats-month {
-    width: 175px !important;
+    width: 180px !important;
     min-width: 0 !important;
-    max-width: 100%;
+    max-width: 100% !important;
+    margin-left: 0 !important;
   }
 
-  .stats-month input {
+  .stats-month input,
+  .stats-month select {
     width: 100% !important;
-    height: 39px !important;
-    min-height: 39px !important;
-    padding: 7px 10px !important;
-    font-size: 12px !important;
-    border-radius: 11px !important;
+    min-width: 0 !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
   }
 }
-
 /* V13.2: explicit safe delete action in job detail, touch friendly on iPhone */
 .job-detail-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .job-detail-actions .detail-delete-btn{border-color:#be665f;color:#bd4640;background:color-mix(in srgb,var(--card) 93%,#df5a49 7%);min-height:44px}
