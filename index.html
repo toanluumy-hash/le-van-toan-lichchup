@@ -501,71 +501,60 @@ html[data-theme='dark'] .security-card,html[data-theme='dark'] .session-entry{bo
 @media(max-width:550px){.job-detail-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.job-detail-actions .btn{width:100%;min-height:48px;padding:11px 9px}}
 
 /* V14 - admin trash and iPhone layout */
-/* FIX ô chọn tháng bị tràn trên Safari iPhone */
-@media (max-width: 740px) {
-  .stats-month {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  .stats-month input[type="month"] {
-    display: block !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    height: 38px !important;
-    padding: 5px 8px !important;
-    font-size: 12px !important;
-    border-radius: 10px !important;
-    box-sizing: border-box !important;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  /* Không cho phần tiêu đề và chọn tháng đẩy nhau */
-  .stats-month,
-  .stats-month * {
-    min-width: 0;
-  }
-}
-/* FIX ô Ngày chụp và Giờ chụp trên iPhone */
-@media screen and (max-width: 740px) {
-  input[type="date"],
-  input[type="time"] {
-    display: block !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-
-    height: 46px !important;
-    min-height: 46px !important;
-    padding: 0 12px !important;
-
-    font-size: 16px !important;
-    line-height: normal !important;
-    border-radius: 12px !important;
-    box-sizing: border-box !important;
-
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  input[type="date"]::-webkit-date-and-time-value,
-  input[type="time"]::-webkit-date-and-time-value {
-    text-align: left;
-    min-height: 1em;
-  }
-
-  input[type="date"]::-webkit-datetime-edit,
-  input[type="time"]::-webkit-datetime-edit {
-    padding: 0;
-    line-height: normal;
-  }
-}
+@media(max-width:740px){.stats-month{width:145px!important;min-width:0!important;max-width:100%!important;margin-left:0!important}.stats-month input{width:100%!important;height:34px!important;min-height:34px!important;padding:4px 8px!important;font-size:12px!important;border-radius:9px!important;box-sizing:border-box!important}}
+.v14-trash-card{padding:16px;border:1px solid var(--border);border-radius:16px;margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.v14-trash-card .v14-trash-main{min-width:0;flex:1}.v14-trash-card .v14-trash-main small{display:block;color:var(--muted);margin-top:5px}
+.v14-trash-actions{display:flex;gap:8px;flex-wrap:wrap}
+.v14-verify{display:block;width:100%;min-height:48px;margin:12px 0;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text)}
+.v14-danger-btn{color:#cf6660!important;border-color:#c35b58!important}
 @media(prefers-reduced-motion:reduce){.v14-trash-card *{animation:none!important;transition:none!important}}
+
+/* LE VAN TOAN V15 — mobile-first refinements; stable paint performance */
+.v15-analytics{overflow:hidden}
+.v15-stats-head{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,180px)!important;align-items:start!important;gap:16px!important}
+.v15-stats-title{min-width:0}
+.v15-stats-title h2{line-height:1.3}
+.v15-eyebrow{font-size:10px;font-weight:800;letter-spacing:.17em;color:#c6a45f}
+.v15-stats-head .stats-month{min-width:0!important;width:100%!important;max-width:180px!important;justify-self:end;overflow:hidden}
+.v15-stats-head .stats-month input[type=month]{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;height:44px!important;min-height:44px!important;padding:6px 9px!important;font-size:13px!important;border-radius:12px!important;text-align:center}
+.v15-stats-head .stats-month input[type=month]::-webkit-date-and-time-value{text-align:center}
+.v15-report-highlight{background:linear-gradient(115deg,#3b3221,#1c211d 70%);color:#f3e7ce;border:1px solid #a38b4b80;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:7px;margin:22px 0 18px;box-shadow:0 12px 35px #00000015}
+.v15-report-highlight>span{font-size:10px;letter-spacing:.18em;font-weight:800;color:#d6b769}
+.v15-report-highlight strong{font-size:clamp(24px,5vw,34px);letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.v15-report-highlight small{color:#bebbac}
+.v15-progress{height:5px;border-radius:20px;background:#ffffff22;overflow:hidden;margin-top:7px}.v15-progress i{display:block;height:100%;background:linear-gradient(90deg,#a77c2f,#e4be64);border-radius:inherit;transition:width .2s ease}
+.v15-stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.v15-metric{position:relative;min-width:0;border-radius:18px}.v15-metric .value{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}.v15-metric-icon{width:29px;height:29px;border-radius:10px;background:#c6a45f18;color:#b99042;display:grid;place-items:center;font-weight:800;margin-bottom:10px}
+.v15-table-title{margin-top:20px}
+.v15-stats-tablewrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.v15-stats-table{min-width:830px}.v15-stats-table td{white-space:nowrap}.v15-stats-table .btn{margin:2px}
+.v15-report-note{margin-top:19px;line-height:1.7}
+.v15-entry-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:end;flex-shrink:0}
+.v15-finish{background:#2e624f!important;color:#f2fff7!important;border-color:#4b9676!important}
+.v15-confirm-layer{position:fixed;inset:0;z-index:6000;background:#070b09b8;display:grid;place-items:center;padding:15px;overscroll-behavior:contain}
+.v15-pay-dialog{width:min(440px,100%);max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #7b6b45;background:#1d241e;color:#f6f3e9;border-radius:24px;padding:24px;box-shadow:0 22px 85px #000a}
+.v15-pay-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:15px;background:#326451;color:#c5ffdf;font-size:25px}
+.v15-pay-dialog h2{font-size:21px;margin:14px 0 6px}.v15-pay-dialog .sub{line-height:1.6;color:#b1b7ac}
+.v15-pay-summary{display:grid;gap:0;margin:18px 0;background:#111914;border:1px solid #3d493e;border-radius:15px;padding:5px 14px}
+.v15-pay-summary>div{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #ffffff14}
+.v15-pay-summary>div:last-child{border-bottom:0}.v15-pay-summary span{font-size:12px;color:#aaa}.v15-pay-summary strong{font-size:15px;white-space:nowrap}
+.v15-pay-question{font-weight:750;font-size:14px}.v15-pay-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.v15-pay-actions .btn{min-width:0;padding:12px 6px;white-space:normal}
+.v15-pay-cancel{width:100%;margin-top:10px}.v15-pay-note{font-size:11px;margin-bottom:0}
+@media(max-width:740px){
+ .v15-stats-head{grid-template-columns:minmax(0,1fr) 158px!important;gap:10px!important}
+ .v15-stats-head .stats-month{width:158px!important;max-width:158px!important;margin:0!important}
+ .v15-stats-head .stats-month input[type=month]{font-size:12px!important;height:39px!important;min-height:39px!important;padding:4px 6px!important}
+ .v15-stats-title h2{font-size:17px!important;margin-top:5px}
+ .v15-stats-title .sub{font-size:11px;line-height:1.5}
+ .v15-stats-grid{gap:10px!important}.v15-metric{padding:14px!important}.v15-metric .value{font-size:19px!important}
+ .v15-entry-actions .btn{padding:8px 9px;font-size:12px}
+ .v15-pay-dialog{padding:18px;border-radius:19px}
+ input[type=date],input[type=time]{width:100%!important;min-width:0!important;max-width:100%!important;min-height:47px!important;height:47px!important;box-sizing:border-box!important;font-size:16px!important;padding:0 12px!important}
+ input[type=date]::-webkit-date-and-time-value,input[type=time]::-webkit-date-and-time-value{text-align:left}
+ .formgrid>.field{min-width:0}
+}
+@media(max-width:375px){.v15-stats-head{grid-template-columns:1fr!important}.v15-stats-head .stats-month{justify-self:start;width:158px!important}}
+@media(prefers-reduced-motion:reduce){.v15-progress i{transition:none!important}}
 </style></head><body><div id="auth" class="authpage"><section class="authhero"><div class="auth-ambient ambient-one"></div><div class="auth-ambient ambient-two"></div><div class="hero-top"><span class="hero-back">✦ &nbsp; CREATIVE WORKSPACE</span><span class="hero-version">LE VAN TOAN / 2026</span></div><div class="hero-inner"><div class="brand"><div class="mark brand-emblem" aria-label="Biểu tượng LE VAN TOAN"><svg viewBox="0 0 64 64" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="32" cy="32" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32 5l8 17M54 18l-18 3M59 40L43 31M38 58l-6-17M12 49l17-9M7 25l17 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><div><strong>LE VAN TOAN</strong><small>PHOTOGRAPHY MANAGEMENT</small></div></div><div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span> PHOTOGRAPHY BUSINESS SUITE</div><h1>Để mỗi khoảnh khắc<br><em>đều có kế hoạch.</em></h1><p>Một không gian tinh gọn để quản lý lịch chụp, khách hàng và doanh thu — dành riêng cho người làm sáng tạo.</p><div class="hero-benefits"><span>◈ Lịch chụp thông minh</span><span>◈ Khách hàng riêng tư</span><span>◈ Theo dõi doanh thu</span></div></div></div><div class="hero-bottom"><span>BUILT FOR PHOTOGRAPHERS</span><span>01 — YOUR CREATIVE SPACE</span></div></section><section class="authbox"><div class="auth-controls"><label class="theme-control" for="authThemeSwitch"><span class="theme-icon" aria-hidden="true">☀️</span><span class="theme-caption">Giao diện <strong id="authThemeLabel">Sáng</strong></span><input id="authThemeSwitch" class="theme-input" type="checkbox" role="switch" aria-label="Bật chế độ tối"><span class="theme-track" aria-hidden="true"><span class="theme-thumb"></span></span></label></div><div class="authcard"><div class="authcard-brand"><span class="auth-mini-logo">✦</span><div><strong>LE VAN TOAN</strong><small>STUDIO MANAGEMENT</small></div></div><div class="auth-welcome">KHÔNG GIAN CỦA BẠN</div><h2 id="authTitle">Chào mừng trở lại</h2><p class="sub" id="authSub">Đăng nhập để tiếp tục hành trình sáng tạo của bạn.</p><div class="auth-features"><span>✧ Bảo mật riêng tư</span><span>◷ Đồng bộ công việc</span></div><div id="resetBox" class="security-reset-box hidden"><h3 id="resetHeading">Khôi phục mật khẩu</h3><p id="resetHint" class="sub">Nhập email đã đăng ký. Nếu tài khoản tồn tại, chúng tôi gửi liên kết có hiệu lực 30 phút.</p><form id="resetForm"><div id="resetEmailRow" class="field"><label>Email tài khoản</label><input id="resetEmail" type="email" autocomplete="email" required placeholder="email@example.com"></div><div id="resetPasswordRow" class="hidden"><div class="field"><label>Mật khẩu mới</label><input id="resetNewPassword" type="password" minlength="12" maxlength="128" autocomplete="new-password" placeholder="Tối thiểu 12 ký tự"></div><div class="field"><label>Nhập lại mật khẩu mới</label><input id="resetConfirmPassword" type="password" minlength="12" maxlength="128" autocomplete="new-password"></div></div><button type="submit" id="resetSubmit" class="btn primary">Gửi liên kết đặt lại mật khẩu</button></form><button id="resetBack" class="btn reset-back" type="button">← Trở lại đăng nhập</button></div><form id="authForm"><div id="nameField" class="field hidden"><label>Họ và tên</label><input id="authName" autocomplete="name"></div><div class="field"><label>Email</label><input id="authEmail" type="email" autocomplete="email" required></div><div class="field password-field"><div class="password-label-row"><label for="authPassword">Mật khẩu</label><button id="forgotPassword" class="forgot-link" type="button">Quên mật khẩu?</button></div><div class="password-input-wrap"><input id="authPassword" type="password" minlength="12" autocomplete="current-password" required placeholder="Nhập mật khẩu của bạn"><button id="showPassword" class="password-eye" type="button" aria-label="Hiện mật khẩu" aria-pressed="false" title="Hiện mật khẩu"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div><button class="btn primary" type="submit" id="authSubmit">Đăng nhập</button></form><div class="auth-separator"><span>hoặc tiếp tục với</span></div><button id="googleLogin" class="google-signin hidden" type="button"><span class="google-g" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5Z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.27 5.48-4.8 7.18l7.73 6C44.38 38.03 46.98 31.85 46.98 24.55Z"/><path fill="#FBBC05" d="M10.53 28.59A14.4 14.4 0 0 1 9.75 24c0-1.59.27-3.13.77-4.59l-7.98-6.2A23.87 23.87 0 0 0 0 24c0 3.87.93 7.53 2.56 10.78l7.97-6.19Z"/><path fill="#34A853" d="M24 48c6.48 0 11.92-2.13 15.88-5.8l-7.73-6c-2.15 1.45-4.92 2.3-8.15 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48Z"/></svg></span><span>Tiếp tục với Google</span><span class="soon-label">Sắp có</span></button><div class="v12-google" id="v12GoogleLogin"></div><button id="v12PasskeyLogin" class="v12-face-btn" type="button">◉ Đăng nhập bằng Face ID / Passkey</button><p class="auth-provider-note">Lần đầu cần đăng nhập email/mật khẩu để liên kết trong Tài khoản.</p><p class="sub" style="margin-top:20px"><span id="authSwitchText">Chưa có tài khoản?</span> <button class="link" id="authSwitch">Đăng ký ngay</button></p><div class="auth-security"><span>✧ Dữ liệu của bạn được lưu riêng tư</span><span>✦ Đăng nhập bảo mật</span></div><p class="notice">🔒 Mỗi tài khoản có dữ liệu riêng, được bảo vệ bằng đăng nhập an toàn.</p><div class="authcard-foot">© 2026 LE VAN TOAN <span>CRAFTED FOR CREATORS ✦</span></div></div></section></div>
 <div id="app" class="app hidden"><div class="lvt-particles" id="lvtParticles" aria-hidden="true"></div><aside class="sidebar" id="sidebar"><div class="brand"><div class="mark brand-emblem" aria-label="Biểu tượng LE VAN TOAN"><svg viewBox="0 0 64 64" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="32" cy="32" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32 5l8 17M54 18l-18 3M59 40L43 31M38 58l-6-17M12 49l17-9M7 25l17 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><div><strong>LE VAN TOAN</strong><small>PHOTOGRAPHY MANAGEMENT</small></div></div><nav class="nav" id="nav"><button data-page="dashboard" class="active"><span>▦</span>Tổng quan</button><button data-page="calendar"><span>▣</span>Lịch chụp</button><button data-page="jobs"><span>▤</span>Công việc</button><button data-page="statistics"><span>◴</span>Thống kê</button><button data-page="notifications"><span>♢</span>Thông báo</button><button data-page="admin" id="adminNav" class="hidden"><span>⚙</span>Quản trị</button><button data-page="trash" id="trashNav" class="hidden"><span>♻</span>Thùng rác</button><button data-page="account"><span>◉</span>Tài khoản</button></nav><div class="sidefoot">© 2026 LE VAN TOAN<br>Cloudflare Workers + D1</div></aside><main class="main"><header class="top"><div><button class="btn mobilemenu" id="menuBtn" type="button">☰ Menu</button><h1 id="pageTitle">Tổng quan</h1><div class="sub" id="welcome">Không gian làm việc của bạn</div></div><div class="top-actions"><button class="btn top-search-btn" id="globalSearch" type="button" aria-label="Tìm kiếm lịch chụp hoặc khách hàng" title="Tìm lịch chụp hoặc khách hàng">⌕ Tìm kiếm</button><button class="btn theme-switch" id="themeToggle" type="button">🌙 Tối</button><span id="headerAvatar" class="header-avatar"></span><span class="pill" id="userBadge">Thành viên</span><button class="btn primary" id="quickAdd">+ Thêm lịch chụp</button></div></header><section id="pageContent"></section></main></div><div id="modalHost"></div><div id="toast" class="toast hidden" role="status"></div><script>// Chỉnh API_BASE khi đổi tên miền backend. Không đặt khóa bí mật trong file này.
 const API_BASE='https://toanart-lichchup-api.toanluumy.workers.dev';
@@ -689,6 +678,42 @@ function calendarHTML(){const m=state.month,y=m.getFullYear(),mo=m.getMonth(),fi
 const isPastJob=j=>String(j?.shoot_date||'').slice(0,10)<today();
 const isLockedJob=j=>j?.payment_status==='paid';
 const canFullEdit=j=>!isPastJob(j)&&!isLockedJob(j);
+async function finishJobWithPayment(job){
+ if(!job || job.status==='cancelled' || job.status==='completed')return;
+ const amount=Number(job.amount)||0;
+ const paidAlready=job.payment_status==='paid';
+ const current=paidAlready?amount:Math.min(amount,Number(job.deposit)||0);
+ const due=Math.max(0,amount-current);
+ const layer=document.createElement('div');layer.className='v15-confirm-layer';
+ layer.innerHTML=`<section class="v15-pay-dialog" role="dialog" aria-modal="true" aria-labelledby="v15PayTitle">
+  <div class="v15-pay-icon">✓</div><h2 id="v15PayTitle">Hoàn thành lịch chụp</h2>
+  <p class="sub">${esc(job.title)}</p>
+  <div class="v15-pay-summary"><div><span>Tổng giá trị lịch</span><strong>${money(amount)}</strong></div><div><span>Đã ghi nhận</span><strong>${money(current)}</strong></div><div><span>Còn cần thu</span><strong>${money(due)}</strong></div></div>
+  <p class="v15-pay-question">Khách đã thanh toán đủ số tiền còn lại chưa?</p>
+  <div class="v15-pay-actions"><button type="button" class="btn" data-finish="no">Chưa thu đủ</button><button type="button" class="btn primary" data-finish="yes">✓ Đã nhận đủ</button></div>
+  <button type="button" class="btn v15-pay-cancel" data-finish="cancel">Hủy</button>
+  <p class="sub v15-pay-note">Chỉ chọn “Đã nhận đủ” khi thực sự đã nhận tiền. Lịch thanh toán đủ sẽ bị khóa.</p>
+ </section>`;
+ document.body.appendChild(layer);
+ const buttons=layer.querySelectorAll('button');
+ const close=()=>layer.remove();
+ const onKey=e=>{if(e.key==='Escape'){document.removeEventListener('keydown',onKey);close()}};
+ document.addEventListener('keydown',onKey);
+ buttons.forEach(btn=>btn.addEventListener('click',async()=>{
+   const ans=btn.dataset.finish;
+   if(ans==='cancel'){document.removeEventListener('keydown',onKey);close();return;}
+   if(ans==='yes' && !paidAlready && !confirm(`Xác nhận đã thực nhận đủ ${money(amount)}? Lịch sẽ bị khóa sau khi lưu.`))return;
+   buttons.forEach(b=>b.disabled=true);
+   try{
+     await api(`/api/jobs/${encodeURIComponent(job.id)}/complete`,{method:'PATCH',data:{paid:ans==='yes'||paidAlready}});
+     document.removeEventListener('keydown',onKey);close();
+     $('#modalHost').innerHTML='';
+     await refresh();
+     toast(ans==='yes'||paidAlready?'Đã hoàn thành và ghi nhận thanh toán đủ':'Đã hoàn thành; vẫn theo dõi số tiền còn phải thu');
+   }catch(err){buttons.forEach(b=>b.disabled=false);toast(err.message||'Không thể hoàn thành lịch')}
+ }));
+ layer.querySelector('[data-finish="yes"]')?.focus();
+}
 function jobDetail(j){
  if(!j){toast('Không tìm thấy lịch chụp');return;}
  const customer=state.customers.find(c=>String(c.id)===String(j.customer_id));
@@ -701,8 +726,9 @@ function jobDetail(j){
  const deletionAllowed=state.user?.role==='admin'||(!isLockedJob(j)&&!isPastJob(j));
  if(actions){
   actions.classList.add('job-detail-actions');
-  actions.innerHTML=`<button type="button" class="btn danger detail-delete-btn" id="deleteFromDetail" ${deletionAllowed?'':'disabled aria-disabled="true"'} title="${deletionAllowed?'Chuyển lịch vào Thùng rác trong 30 ngày':'Lịch đã khóa hoặc đã qua ngày không được xóa'}">🗑 Xóa lịch</button><button type="button" class="btn primary" id="doneDetail">Đóng</button>`;
+  actions.innerHTML=`${j.status!=='completed'&&j.status!=='cancelled'?`<button type="button" class="btn v15-finish" id="finishFromDetail">✓ Hoàn thành</button>`:''}<button type="button" class="btn danger detail-delete-btn" id="deleteFromDetail" ${deletionAllowed?'':'disabled aria-disabled="true"'} title="${deletionAllowed?'Chuyển lịch vào Thùng rác trong 30 ngày':'Lịch đã khóa hoặc đã qua ngày không được xóa'}">🗑 Xóa lịch</button><button type="button" class="btn primary" id="doneDetail">Đóng</button>`;
  }
+ $('#finishFromDetail')?.addEventListener('click',()=>finishJobWithPayment(j));
  $('#doneDetail')?.addEventListener('click',()=>{$('#modalHost').innerHTML=''});
  $('#deleteFromDetail')?.addEventListener('click',async()=>{
   if(!deletionAllowed)return;
@@ -715,14 +741,14 @@ function jobDetail(j){
   }catch(err){if(btn)btn.disabled=false;toast(err?.message||'Không thể xóa lịch')}
  });
 }
-function dayJobsHTML(date){const list=state.jobs.filter(j=>String(j.shoot_date||'').slice(0,10)===date).sort((a,b)=>String(a.start_time||'').localeCompare(String(b.start_time||'')));return `<div class="panelhead"><h2>Lịch ngày ${prettyDate(date)}</h2>${date<today()?`<span class="tag">Ngày đã qua</span>`:`<button class="btn primary" data-add-date="${date}">+ Thêm</button>`}</div>${list.length?list.map(j=>`<div class="entry"><div><strong>${esc(j.title)}</strong><small>${esc(j.start_time||'--:--')} · ${esc(j.location||'Chưa có địa điểm')}<br>${money(j.amount)} · Cọc ${money(j.deposit)}</small><div style="margin-top:6px">${statusBadge(j.status)}</div></div><button class="btn readonly-action" data-${isLockedJob(j)?'view':'edit'}-job="${esc(j.id)}">${isLockedJob(j)?'🔒 Xem':'Sửa'}</button></div>`).join(''):'<div class="empty">Ngày này chưa có lịch chụp.</div>'}`}
+function dayJobsHTML(date){const list=state.jobs.filter(j=>String(j.shoot_date||'').slice(0,10)===date).sort((a,b)=>String(a.start_time||'').localeCompare(String(b.start_time||'')));return `<div class="panelhead"><h2>Lịch ngày ${prettyDate(date)}</h2>${date<today()?`<span class="tag">Ngày đã qua</span>`:`<button class="btn primary" data-add-date="${date}">+ Thêm</button>`}</div>${list.length?list.map(j=>`<div class="entry"><div><strong>${esc(j.title)}</strong><small>${esc(j.start_time||'--:--')} · ${esc(j.location||'Chưa có địa điểm')}<br>${money(j.amount)} · Cọc ${money(j.deposit)}</small><div style="margin-top:6px">${statusBadge(j.status)}</div></div><div class="v15-entry-actions">${j.status!=='completed'&&j.status!=='cancelled'?`<button class="btn v15-finish" data-complete-job="${esc(j.id)}">✓ Xong</button>`:''}<button class="btn readonly-action" data-${isLockedJob(j)?'view':'edit'}-job="${esc(j.id)}">${isLockedJob(j)?'🔒 Xem':'Sửa'}</button></div></div>`).join(''):'<div class="empty">Ngày này chưa có lịch chụp.</div>'}`}
 function jobsHTML(){return `<div class="panel"><div class="panelhead"><h2>Danh sách lịch chụp</h2><button class="btn primary" data-add-date="${today()}">+ Tạo lịch</button></div><div class="toolbar"><input id="jobSearch" placeholder="Tìm tên công việc, địa điểm..."><select id="jobStatus"><option value="">Tất cả trạng thái</option>${['pending','confirmed','in_progress','completed','cancelled'].map(s=>`<option value="${s}">${statusText(s)}</option>`).join('')}</select></div><div class="tablewrap job-tablewrap"><table class="jobs-table"><thead><tr><th>Ngày</th><th>Công việc</th><th>Khách hàng</th><th>Tổng tiền</th><th>Cọc</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody id="jobRows"></tbody></table></div></div>`}
 function drawJobs(){
  const input=$('#jobSearch');const q=String(input?.value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
  const status=$('#jobStatus')?.value||'';
  const norm=v=>String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  const items=state.jobs.filter(j=>(!status||j.status===status)&&norm(`${j.title} ${j.location} ${j.customer_name||customerName(j.customer_id)} ${state.customers.find(c=>String(c.id)===String(j.customer_id))?.phone||''}`).includes(q)).sort((a,b)=>String(b.shoot_date).localeCompare(String(a.shoot_date)));
- const actions=j=>isLockedJob(j)?`<button class="btn btn-compact" data-view-job="${esc(j.id)}">🔒 Xem</button>${state.user?.role==='admin'?`<button class="btn btn-compact danger" data-del-job="${esc(j.id)}">Xóa</button>`:''}`:`<button class="btn btn-compact" data-edit-job="${esc(j.id)}">Sửa</button>${isPastJob(j)&&state.user?.role!=='admin'?'':`<button class="btn btn-compact danger" data-del-job="${esc(j.id)}">Xóa</button>`}`;
+ const actions=j=>`${j.status!=='completed'&&j.status!=='cancelled'?`<button class="btn btn-compact v15-finish" data-complete-job="${esc(j.id)}">✓ Xong</button>`:''}`+(isLockedJob(j)?`<button class="btn btn-compact" data-view-job="${esc(j.id)}">🔒 Xem</button>${state.user?.role==='admin'?`<button class="btn btn-compact danger" data-del-job="${esc(j.id)}">Xóa</button>`:''}`:`<button class="btn btn-compact" data-edit-job="${esc(j.id)}">Sửa</button>${isPastJob(j)&&state.user?.role!=='admin'?'':`<button class="btn btn-compact danger" data-del-job="${esc(j.id)}">Xóa</button>`}`);
  $('#jobRows').innerHTML=items.length?items.map(j=>`<tr class="job-card-row">
  <td data-label="Ngày"><span>${prettyDate(j.shoot_date)}</span></td>
  <td data-label="Công việc" class="job-title-cell"><strong>${esc(j.title)}</strong><small class="sub">${esc(j.location||'')}</small></td>
@@ -742,7 +768,28 @@ function trashHTML(){
  return `<div class="panel"><div class="panelhead"><div><h2>♻ Thùng rác</h2><p class="sub">Lịch đã xóa được giữ tối đa 30 ngày. Chỉ Admin được khôi phục. Danh sách chỉ gồm lịch thuộc tài khoản của bạn.</p></div><button class="btn" data-trash-refresh="1">Làm mới</button></div>
  ${state.trash.length?state.trash.map(j=>`<div class="v14-trash-card"><div class="v14-trash-main"><strong>${esc(j.title)}</strong><small>${prettyDate(j.shoot_date)} · ${esc(j.customer_name||customerName(j.customer_id))} · ${money(j.amount)}</small><small>Đã xóa: ${new Date(Number(j.deleted_at)).toLocaleString('vi-VN')} · Hết hạn sau 30 ngày</small></div><div class="v14-trash-actions"><button class="btn primary" data-restore-job="${esc(j.id)}">Khôi phục</button></div></div>`).join(''):'<p class="empty">Thùng rác trống.</p>'}</div>`;
 }
-function statsHTML(){const selected=state.statsMonth||dateISO(new Date()).slice(0,7);const active=state.jobs.filter(j=>j.status!=='cancelled'&&String(j.shoot_date||'').slice(0,7)===selected);const completed=active.filter(j=>j.status==='completed');const revenue=sum(active,'amount'),deposit=sum(active,'deposit');return `<div class="panel analytics-panel"><div class="panelhead"><div><h2>Thống kê theo tháng</h2><p class="sub">Lọc chính xác theo tháng và năm bạn muốn xem.</p></div><div class="field stats-month"><label>Chọn tháng</label><input type="month" id="statsMonth" value="${esc(selected)}" min="2020-01" max="2100-12"></div></div><div class="grid4"><div class="metric"><div class="label">Tổng lịch</div><div class="value">${active.length}</div><div class="accent">Trong tháng đã chọn</div></div><div class="metric"><div class="label">Đã hoàn thành</div><div class="value">${completed.length}</div><div class="accent">Lịch không bị hủy</div></div><div class="metric"><div class="label">Tổng tiền dự kiến</div><div class="value">${money(revenue)}</div><div class="accent">Theo hợp đồng</div></div><div class="metric"><div class="label">Tiền cọc</div><div class="value">${money(deposit)}</div><div class="accent">Còn dự kiến: ${money(revenue-deposit)}</div></div></div><div class="panelhead"><h2>Chi tiết lịch chụp tháng ${esc(selected)}</h2></div><div class="tablewrap"><table><thead><tr><th>Ngày</th><th>Khách hàng</th><th>Công việc</th><th>Tổng tiền</th><th>Tiền cọc</th><th>Thanh toán</th><th>Thao tác</th></tr></thead><tbody>${active.sort((a,b)=>String(a.shoot_date).localeCompare(String(b.shoot_date))).map(j=>`<tr><td>${prettyDate(j.shoot_date)}</td><td>${esc(j.customer_name||customerName(j.customer_id))}</td><td>${esc(j.title)}</td><td><span class="currency">${money(j.amount)}</span></td><td><span class="currency">${money(j.deposit)}</span></td><td>${j.payment_status==='paid'?'<span class="paid-pill">🔒 Đã trả</span>':'<span class="pending-pill">Chưa đủ</span>'}</td><td>${isLockedJob(j)?`<button class="btn btn-compact" data-view-job="${esc(j.id)}">Xem</button>`:`<button class="btn btn-compact" data-edit-job="${esc(j.id)}">Sửa</button>`}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Tháng này chưa có lịch chụp.</td></tr>'}</tbody></table></div><p class="sub">Lịch đã qua có thể sửa tên và xác nhận thanh toán; lịch đã thanh toán sẽ khóa chỉnh sửa (Admin có thể chuyển vào Thùng rác). Số tiền là giá trị ghi nhận trên lịch, chưa phải báo cáo tiền thực nhận từ ngân hàng.</p></div>`}
+function statsHTML(){
+ const selected=state.statsMonth||dateISO(new Date()).slice(0,7);
+ const active=state.jobs.filter(j=>j.status!=='cancelled'&&String(j.shoot_date||'').slice(0,7)===selected);
+ const completed=active.filter(j=>j.status==='completed');
+ const revenue=sum(active,'amount');
+ const received=active.reduce((total,j)=>total+(j.payment_status==='paid'?Number(j.amount)||0:Math.min(Number(j.deposit)||0,Number(j.amount)||0)),0);
+ const due=Math.max(0,revenue-received);
+ const paidCount=active.filter(j=>j.payment_status==='paid').length;
+ const metric=(icon,title,value,hint)=>`<div class="metric v15-metric"><div class="v15-metric-icon">${icon}</div><div class="label">${title}</div><div class="value">${value}</div><div class="accent">${hint}</div></div>`;
+ return `<div class="panel analytics-panel v15-analytics"><div class="panelhead v15-stats-head"><div class="v15-stats-title"><span class="v15-eyebrow">MONTHLY REPORT</span><h2>Thống kê theo tháng</h2><p class="sub">Doanh thu hợp đồng và số tiền đã ghi nhận.</p></div><div class="field stats-month"><label for="statsMonth">Chọn tháng</label><input type="month" id="statsMonth" value="${esc(selected)}" min="2020-01" max="2100-12"></div></div>
+ <div class="v15-report-highlight"><span>✦ BÁO CÁO ${esc(selected)}</span><strong>${money(received)}</strong><small>Tổng tiền đã thu theo trạng thái thanh toán</small><div class="v15-progress"><i style="width:${revenue?Math.min(100,Math.round(received/revenue*100)):0}%"></i></div></div>
+ <div class="grid4 v15-stats-grid">
+ ${metric('▦','Tổng lịch',active.length,'Lịch trong tháng')}
+ ${metric('✓','Đã hoàn thành',completed.length,'Công việc đã kết thúc')}
+ ${metric('◈','Tổng giá trị lịch',money(revenue),'Giá trị hợp đồng')}
+ ${metric('↗','Đã thu',money(received),'Đã trả đủ: '+paidCount+' lịch')}
+ ${metric('◷','Còn phải thu',money(due),'Chưa được ghi nhận thanh toán đủ')}
+ </div>
+ <div class="panelhead v15-table-title"><h2>Chi tiết lịch chụp tháng ${esc(selected)}</h2></div>
+ <div class="tablewrap v15-stats-tablewrap"><table class="v15-stats-table"><thead><tr><th>Ngày</th><th>Khách hàng</th><th>Công việc</th><th>Tổng tiền</th><th>Đã thu</th><th>Còn thu</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody>${active.sort((a,b)=>String(a.shoot_date).localeCompare(String(b.shoot_date))).map(j=>{const got=j.payment_status==='paid'?Number(j.amount)||0:Math.min(Number(j.deposit)||0,Number(j.amount)||0);return `<tr><td>${prettyDate(j.shoot_date)}</td><td>${esc(j.customer_name||customerName(j.customer_id))}</td><td>${esc(j.title)}</td><td><span class="currency">${money(j.amount)}</span></td><td><span class="currency">${money(got)}</span></td><td><span class="currency">${money(Math.max(0,Number(j.amount)-got))}</span></td><td>${j.payment_status==='paid'?'<span class="paid-pill">🔒 Đã trả đủ</span>':'<span class="pending-pill">Chưa trả đủ</span>'}</td><td>${j.status!=='completed'&&j.status!=='cancelled'?`<button class="btn btn-compact v15-finish" data-complete-job="${esc(j.id)}">✓ Xong</button>`:''}<button class="btn btn-compact" data-${isLockedJob(j)?'view':'edit'}-job="${esc(j.id)}">${isLockedJob(j)?'Xem':'Sửa'}</button></td></tr>`}).join('')||'<tr><td colspan="8" class="empty">Tháng này chưa có lịch chụp.</td></tr>'}</tbody></table></div>
+ <p class="sub v15-report-note">Tiền đã thu = tổng giá trị của lịch đánh dấu Đã thanh toán + tiền cọc của lịch chưa trả đủ. Chỉ cập nhật “Đã trả đủ” sau khi thực nhận tiền; tiền thu thêm từng đợt ngoài cọc chưa được lưu riêng trong phiên bản này.</p></div>`;
+}
 function notificationsHTML(){const next=new Date();next.setDate(next.getDate()+1);const dates=[today(),dateISO(next)],list=state.jobs.filter(j=>dates.includes(String(j.shoot_date||'').slice(0,10))&&j.status!=='cancelled');return `<div class="panel"><div class="panelhead"><h2>Lịch sắp diễn ra</h2></div>${list.length?list.map(j=>`<div class="entry"><div><strong>${esc(j.title)}</strong><small>${prettyDate(j.shoot_date)} · ${esc(j.start_time||'')} · ${esc(j.location||'')}</small></div>${statusBadge(j.status)}</div>`).join(''):'<div class="empty">Không có lịch chụp hôm nay hoặc ngày mai.</div>'}<p class="sub">Đây là thông báo hiển thị khi mở website; chưa có thông báo đẩy khi đóng trình duyệt.</p></div>`}
 function adminHTML(){return `<div class="panel"><div class="panelhead"><h2>Quản lý người dùng</h2><button class="btn" id="reloadUsers">Làm mới</button></div><div class="tablewrap"><table><thead><tr><th>Tên</th><th>Email</th><th>Quyền</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody>${state.users.map(u=>`<tr><td>${esc(u.name)}</td><td>${esc(u.email)}</td><td>${esc(u.role)}</td><td>${u.is_active?'Hoạt động':'Đã khóa'}</td><td>${String(u.id)===String(state.user?.id)?'Tài khoản của bạn':`<button class="btn" data-toggle-user="${esc(u.id)}">${u.is_active?'Khóa':'Mở khóa'}</button>`}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">Chưa tải được danh sách người dùng.</td></tr>'}</tbody></table></div></div>`}
 function editAccountName(){
@@ -780,7 +827,7 @@ async function prepareAvatarImage(file){
   return dataUrl;
  }finally{URL.revokeObjectURL(objectUrl)}
 }
-function bindPage(){const root=$('#pageContent');root.onclick=async e=>{const t=e.target.closest('button');if(!t)return;try{if(t.dataset.trashRefresh){await loadTrash();render()}else if(t.dataset.restoreJob){if(confirm('Khôi phục lịch chụp này về lịch và thống kê?')){await api(`/api/jobs/${encodeURIComponent(t.dataset.restoreJob)}/restore`,{method:'POST'});await loadTrash();await refresh();toast('Đã khôi phục lịch chụp')}}else if(t.dataset.month!==undefined){const n=Number(t.dataset.month);state.month=n===0?new Date():new Date(state.month.getFullYear(),state.month.getMonth()+n,1);if(n===0)state.selected=today();render()}else if(t.dataset.date){state.selected=t.dataset.date;state.month=new Date(t.dataset.date+'T12:00:00');render()}else if(t.dataset.addDate){if(t.dataset.addDate<today())toast('Ngày đã qua chỉ được xem');else jobModal(null,t.dataset.addDate)}else if(t.dataset.viewJob)jobDetail(state.jobs.find(j=>String(j.id)===t.dataset.viewJob));else if(t.dataset.editJob){const j=state.jobs.find(j=>String(j.id)===t.dataset.editJob);if(isLockedJob(j))jobDetail(j);else jobModal(j)}else if(t.dataset.delJob){const j=state.jobs.find(j=>String(j.id)===t.dataset.delJob);if(state.user?.role!=='admin'&&(isPastJob(j)||isLockedJob(j)))jobDetail(j);else await deleteItem('jobs',t.dataset.delJob,'lịch chụp')}else if(t.id==='addCustomer')customerModal();else if(t.dataset.editCustomer)customerModal(state.customers.find(c=>String(c.id)===t.dataset.editCustomer));else if(t.dataset.delCustomer)await deleteItem('customers',t.dataset.delCustomer,'khách hàng');else if(t.dataset.toggleUser){const u=state.users.find(u=>String(u.id)===t.dataset.toggleUser);if(u&&confirm(`Bạn chắc chắn muốn ${u.is_active?'khóa':'mở khóa'} tài khoản ${u.email}?`)){await api(`/api/admin/users/${encodeURIComponent(u.id)}/status`,{method:'PATCH',data:{is_active:!Boolean(u.is_active)}});await getUsers();render();toast('Đã cập nhật trạng thái')}}else if(t.id==='reloadUsers'){await getUsers();render()}else if(t.id==='changePasswordBtn'){changePasswordModal()}else if(t.id==='showSessionsBtn'){await displaySessions()}else if(t.id==='logoutAllBtn'){if(confirm('Đăng xuất khỏi tất cả thiết bị, bao gồm thiết bị hiện tại?')){await api('/api/auth/logout-all',{method:'POST'});setToken('');showAuth();toast('Đã đăng xuất trên tất cả thiết bị')}}else if(t.id==='editAccountName'){editAccountName()}else if(t.id==='pickAvatarSecondary'){$('#avatarUpload')?.click()}else if(t.id==='removeAvatar'){localStorage.removeItem(avatarKey());refreshAvatar();render();toast('Đã xóa ảnh đại diện')}else if(t.id==='logoutBtn'){try{await api('/api/auth/logout',{method:'POST'})}catch{}setToken('');showAuth();toast('Đã đăng xuất')}}catch(err){toast(err.message)}};$('#jobSearch')?.addEventListener('input',drawJobs);$('#jobStatus')?.addEventListener('change',drawJobs);$('#customerSearch')?.addEventListener('input',drawCustomers);$('#statsMonth')?.addEventListener('change',e=>{state.statsMonth=e.target.value;render()});if(state.page==='jobs')drawJobs();if(state.page==='customers')drawCustomers();
+function bindPage(){const root=$('#pageContent');root.onclick=async e=>{const t=e.target.closest('button');if(!t)return;try{if(t.dataset.trashRefresh){await loadTrash();render()}else if(t.dataset.restoreJob){if(confirm('Khôi phục lịch chụp này về lịch và thống kê?')){await api(`/api/jobs/${encodeURIComponent(t.dataset.restoreJob)}/restore`,{method:'POST'});await loadTrash();await refresh();toast('Đã khôi phục lịch chụp')}}else if(t.dataset.month!==undefined){const n=Number(t.dataset.month);state.month=n===0?new Date():new Date(state.month.getFullYear(),state.month.getMonth()+n,1);if(n===0)state.selected=today();render()}else if(t.dataset.date){state.selected=t.dataset.date;state.month=new Date(t.dataset.date+'T12:00:00');render()}else if(t.dataset.addDate){if(t.dataset.addDate<today())toast('Ngày đã qua chỉ được xem');else jobModal(null,t.dataset.addDate)}else if(t.dataset.completeJob){await finishJobWithPayment(state.jobs.find(j=>String(j.id)===t.dataset.completeJob))}else if(t.dataset.viewJob)jobDetail(state.jobs.find(j=>String(j.id)===t.dataset.viewJob));else if(t.dataset.editJob){const j=state.jobs.find(j=>String(j.id)===t.dataset.editJob);if(isLockedJob(j))jobDetail(j);else jobModal(j)}else if(t.dataset.delJob){const j=state.jobs.find(j=>String(j.id)===t.dataset.delJob);if(state.user?.role!=='admin'&&(isPastJob(j)||isLockedJob(j)))jobDetail(j);else await deleteItem('jobs',t.dataset.delJob,'lịch chụp')}else if(t.id==='addCustomer')customerModal();else if(t.dataset.editCustomer)customerModal(state.customers.find(c=>String(c.id)===t.dataset.editCustomer));else if(t.dataset.delCustomer)await deleteItem('customers',t.dataset.delCustomer,'khách hàng');else if(t.dataset.toggleUser){const u=state.users.find(u=>String(u.id)===t.dataset.toggleUser);if(u&&confirm(`Bạn chắc chắn muốn ${u.is_active?'khóa':'mở khóa'} tài khoản ${u.email}?`)){await api(`/api/admin/users/${encodeURIComponent(u.id)}/status`,{method:'PATCH',data:{is_active:!Boolean(u.is_active)}});await getUsers();render();toast('Đã cập nhật trạng thái')}}else if(t.id==='reloadUsers'){await getUsers();render()}else if(t.id==='changePasswordBtn'){changePasswordModal()}else if(t.id==='showSessionsBtn'){await displaySessions()}else if(t.id==='logoutAllBtn'){if(confirm('Đăng xuất khỏi tất cả thiết bị, bao gồm thiết bị hiện tại?')){await api('/api/auth/logout-all',{method:'POST'});setToken('');showAuth();toast('Đã đăng xuất trên tất cả thiết bị')}}else if(t.id==='editAccountName'){editAccountName()}else if(t.id==='pickAvatarSecondary'){$('#avatarUpload')?.click()}else if(t.id==='removeAvatar'){localStorage.removeItem(avatarKey());refreshAvatar();render();toast('Đã xóa ảnh đại diện')}else if(t.id==='logoutBtn'){try{await api('/api/auth/logout',{method:'POST'})}catch{}setToken('');showAuth();toast('Đã đăng xuất')}}catch(err){toast(err.message)}};$('#jobSearch')?.addEventListener('input',drawJobs);$('#jobStatus')?.addEventListener('change',drawJobs);$('#customerSearch')?.addEventListener('input',drawCustomers);$('#statsMonth')?.addEventListener('change',e=>{state.statsMonth=e.target.value;render()});if(state.page==='jobs')drawJobs();if(state.page==='customers')drawCustomers();
 $('#avatarUpload')?.addEventListener('change', async e=>{
  const input=e.currentTarget,file=input.files?.[0];if(!file)return;
  try{
