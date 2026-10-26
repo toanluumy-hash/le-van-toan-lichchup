@@ -101,8 +101,8 @@ html[data-theme="dark"] .authcard .notice{background:#2a281e;border-color:#4b422
 html[data-theme="dark"] .authcard-foot{border-color:#3b3b31}
 html[data-theme="dark"] .auth-theme-toggle{background:#272b23;border-color:#454735;color:#e8d9b7}
 html[data-theme="dark"] .authcard .btn.primary{color:#251c0b}
-@media(max-width:500px){.authpage{grid-template-columns:1fr}.authhero{min-height:420px;padding:28px 7%;gap:20px}.hero-inner{margin:25px 0}.authhero .brand{margin-bottom:30px}.authhero h1{font-size:clamp(35px,6vw,55px)}.authbox{padding:70px 22px}.authcard{max-width:530px}}
-@media(max-width:250px){.authhero{min-height:350px;padding:22px 24px}.hero-top,.hero-bottom{font-size:8px}.hero-version{display:none}.authhero .brand{margin-bottom:24px}.authhero h1{font-size:35px}.hero-copy p{font-size:12px!important}.hero-benefits{margin-top:18px;gap:6px}.hero-benefits span{font-size:9px;padding:8px}.authbox{padding:70px 14px 24px}.authcard{padding:25px 21px}.authcard-foot span{display:none}}
+@media(max-width:5950px){.authpage{grid-template-columns:1fr}.authhero{min-height:420px;padding:28px 7%;gap:20px}.hero-inner{margin:25px 0}.authhero .brand{margin-bottom:30px}.authhero h1{font-size:clamp(35px,6vw,55px)}.authbox{padding:70px 22px}.authcard{max-width:530px}}
+@media(max-width:550px){.authhero{min-height:350px;padding:22px 24px}.hero-top,.hero-bottom{font-size:8px}.hero-version{display:none}.authhero .brand{margin-bottom:24px}.authhero h1{font-size:35px}.hero-copy p{font-size:12px!important}.hero-benefits{margin-top:18px;gap:6px}.hero-benefits span{font-size:9px;padding:8px}.authbox{padding:70px 14px 24px}.authcard{padding:25px 21px}.authcard-foot span{display:none}}
 @media(prefers-reduced-motion:reduce){.auth-ambient{animation:none!important}*{scroll-behavior:auto!important}}
 
 /* V3.1: genuine accessible dark/light switch in auth top-right */
@@ -481,24 +481,10 @@ html[data-theme='dark'] .security-card,html[data-theme='dark'] .session-entry{bo
  #app .entry small{overflow-wrap:anywhere}
  #app .job-action-buttons .btn{min-height:35px}
 }
-@media(max-width:380px){
- #app>.main{padding:11px 9px 25px!important}
- #app>.main>.top{gap:7px 5px;grid-template-columns:auto minmax(0,1fr) auto 30px}
- #globalSearch{font-size:0!important;max-width:54px!important;justify-self:end}
- #globalSearch::before{content:'⌕'!important;display:inline!important;font-size:24px;line-height:1}
- #themeToggle{font-size:11px!important;padding:0 7px!important}
- #headerAvatar{width:30px}
- #pageTitle{font-size:20px}
- #quickAdd{font-size:10px;padding:7px 9px!important}
- #app #pageContent>.layout2>.panel{padding:9px!important}
- #app .week,#app .days{gap:3px}
- #app .day{min-height:61px;padding:5px 3px}
-}
-@media(prefers-reduced-motion:reduce){.v13-confirm-dialog{animation:none!important}#app .day{transition:none!important}}
-/* Cân lại ô chọn tháng trên iPhone */
+/* Thu nhỏ ô chọn tháng trên iPhone */
 @media (max-width: 740px) {
   .stats-month {
-    width: 180px !important;
+    width: 145px !important;
     min-width: 0 !important;
     max-width: 100% !important;
     margin-left: 0 !important;
@@ -508,11 +494,11 @@ html[data-theme='dark'] .security-card,html[data-theme='dark'] .session-entry{bo
   .stats-month select {
     width: 100% !important;
     min-width: 0 !important;
-    height: 42px !important;
-    min-height: 42px !important;
-    padding: 6px 10px !important;
-    font-size: 13px !important;
-    border-radius: 12px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+    border-radius: 9px !important;
     box-sizing: border-box !important;
   }
 }
